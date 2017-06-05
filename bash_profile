@@ -1,5 +1,6 @@
-#source $HOME/.isitools_bash_profile
+source $HOME/bin/Bash_Profile/isitools_bash_profile
 source /isitools/.bash_profile
+
 alias envp="source ~/bin/GupEnv/bin/activate"
 alias envp_off="source ~/bin/GupEnv/bin/deactivate"
 export PYTHONPATH=~/bin:$PYTHONPATH 

@@ -18,7 +18,6 @@ else
 fi
 
 ##### User-specific environment and startup programs #####
-export HOME=/w4home/$USER
 export SVN_EDITOR=vi
 #export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk.x86_64/bin/java
 #export APP_JRE_HOME=/usr/lib/jvm/java-1.6.0-openjdk.x86_64
