@@ -1,6 +1,6 @@
 source $HOME/bin/Bash_Profile/isitools_bash_profile
-source /isitools/.bash_profile
-
+#source /isitools/.bash_profile
+#source /w4home/mikec/.bash_profile/.bash_profile_perl5.18.2 
 alias envp="source ~/bin/GupEnv/bin/activate"
 alias envp_off="source ~/bin/GupEnv/bin/deactivate"
 export PYTHONPATH=~/bin:$PYTHONPATH 
@@ -32,6 +32,11 @@ function see_ls_colors {
     do        
      echo -e "\e[${i#*=}m$( x=${i%=*}; [ "${!x}" ] && echo "${!x}" || echo "$x" )\e[m" 
     done       
+}
+
+function tar_gd {
+    tar -czf "$1.tgz" "$1"
+    mv "$1.tgz" ~/GUP/Results_Delivered/
 }
 
 
