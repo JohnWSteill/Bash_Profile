@@ -38,7 +38,7 @@ function tar_gd {
     tar -czf "$1.tgz" "$1"
     mv "$1.tgz" ~/GUP/Results_Delivered/
 }
-
+export -f tar_gd
 
 path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
 path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
@@ -81,6 +81,13 @@ function git_ls_timestamp {
         `git log --follow $fn`
     done
 }
+function git_ls_a {
+    for fn in `ls`; do 
+        echo "$(git log -1 --format="%ad" -- $fn) $fn"
+    done
+} 
+export -f git_ls_a
+
 
 function use_perl_518 {
     dontUsePerl510

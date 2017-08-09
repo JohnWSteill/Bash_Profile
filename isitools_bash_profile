@@ -3,6 +3,11 @@
 REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//`
 echo "This is a CentOS $REV machine"
 
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.10.1/lib/5.10.1 
+export PERL_MB_OPT=/isitools/perl5.10.1/lib/5.10.1
+export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.10.1/lib/5.10.1
+export PERL5LIB='/isitools/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux:/isitools/perl5.10.1/lib/5.10.1:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux-thread-multi-ld:/usr/lib64/perl5'
+export PATH=/isitools/perl5.10.1/bin:$PATH:
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then . ~/.bashrc
 fi
@@ -87,99 +92,7 @@ case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9|5.10)
     #fi
 esac
 
-##### PERL virtual env #####
 ##### CENTOS-6+7 #####
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511)
-
-    if  [ "$USER" = "root" ]; then
-        echo "Logging on as root user"
-        #export PERL_LOCAL_LIB_ROOT=/isitools/perl5.10.1/lib/5.10.1
-        #export PERL_MB_OPT=/isitools/perl5.10.1/lib/5.10.1
-        #export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.10.1/lib/5.10.1
-        #export PERL5LIB='/isitools/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux:/isitools/perl5.10.1/lib/5.10.1:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux-thread-multi-ld:/usr/lib64/perl5'
-        #export PATH=/isitools/perl5.10.1/bin:$PATH:
-    fi
-
-    if  [ "$USER" != "root" ] && [ "$USER" != "mikec" ]; then
-        export PERL_LOCAL_LIB_ROOT=/isitools/perl5.10.1/lib/5.10.1 
-        export PERL_MB_OPT=/isitools/perl5.10.1/lib/5.10.1
-        export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.10.1/lib/5.10.1
-        export PERL5LIB='/isitools/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux:/isitools/perl5.10.1/lib/5.10.1:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux-thread-multi-ld:/usr/lib64/perl5'
-        #export PERL5LIB='/usr/local/lib64/perl5:/usr/local/share/perl5:/usr/lib64/perl5/vendor_perl:/usr/share/perl5/vendor_perl:/usr/lib64/perl5:/usr/share/perl5'
-        export PATH=/isitools/perl5.10.1/bin:$PATH:
-    fi
-
-    if  [ "$USER" = "mikec" ]; then
-        export PERL_LOCAL_LIB_ROOT=/isitools/perl5.10.1/lib/5.10.1
-        export PERL_MB_OPT=/isitools/perl5.10.1/lib/5.10.1
-        export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.10.1/lib/5.10.1
-        export PERL5LIB='/isitools/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux:/isitools/perl5.10.1/lib/5.10.1:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux-thread-multi-ld:/usr/lib64/perl5'
-        #export PERL5LIB='/usr/local/lib64/perl5:/usr/local/share/perl5:/usr/lib64/perl5/vendor_perl:/usr/share/perl5/vendor_perl:/usr/lib64/perl5:/usr/share/perl5'
-        export PATH=/isitools/perl5.10.1/bin:$PATH:
-    fi
-
-    #if [ "$USER" = "mikec" ] || [ "$USER" = "ron" ]; then 
-    ##HOME=/isitools/perl5.18.2
-    ##HOME=/w4home/mikec
-    #export PERL_LOCAL_LIB_ROOT=/isitools/perl5.18.2/lib/5.18.2 
-    #export PERL_MB_OPT=/isitools/perl5.18.2/lib/5.18.2 
-    #export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.18.2/lib/5.18.2 
-    #export PERL5LIB='/isitools/perl5.18.2:/isitools/perl5.18.2/lib/5.18.2/lib/perl5:/isitools/perl5.18.2/lib/5.18.2/x86_64-linux:/isitools/perl5.18.2/lib/5.18.2:/isitools/perl5.18.2/lib/5.18.2/x86_64-linux-thread-multi-ld' 
-    #export PATH=/isitools/perl5.18.2/bin:$PATH:
-    #fi
-
-    #if [ "$USER" = "mikec" ]; then
-    #HOME=/isitools/perl5.20.0
-    #export PERL_LOCAL_LIB_ROOT=/isitools/perl5.20.0/lib/5.20.0
-    #export PERL_MB_OPT=/isitools/perl5.20.0/lib/5.20.0
-    #export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.20.0/lib/5.20.0
-    #export PERL5LIB='/isitools/perl5.20.0:/isitools/perl5.20.0/lib/5.20.0/lib/perl5:/isitools/perl5.20.0/lib/5.20.0/x86_64-linux:/isitools/perl5.20.0/lib/5.20.0:/isitools/perl5.20.0/lib/5.20.0/x86_64-linux-thread-multi-ld'
-    #export PATH=/isitools/perl5.20.0/bin:$PATH:
-    #fi
-
-    #if [ "$USER" = "mikec" ]; then
-    ##HOME=/isitools/perl5.22.0
-    #HOME=/w4home/mikec
-    #export PERL_LOCAL_LIB_ROOT=/isitools/perl5.22.0/lib/5.20.0
-    #export PERL_MB_OPT=/isitools/perl5.22.0/lib/5.20.0
-    #export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.22.0/lib/5.20.0
-    #export PERL5LIB='/isitools/perl5.22.0:/isitools/perl5.22.0/lib/5.20.0/lib/perl5:/isitools/perl5.22.0/lib/5.20.0/x86_64-linux:/isitools/perl5.22.0/lib/5.20.0:/isitools/perl5.22.0/lib/5.20.0/x86_64-linux-thread-multi-ld'
-    #export PATH=/isitools/perl5.22.0/bin:$PATH:
-    #fi
-
-    #echo $PATH
-esac
-##### CENTOS-5 #####
-case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9|5.10)
-    #if [ "$USER" = "mikec" ]; then
-    #export PERL_LOCAL_LIB_ROOT=/isitools/CentOS-5/perl5.18.0/lib/5.18.0
-    #export PERL_MB_OPT=/isitools/CentOS-5/perl5.18.0/lib/5.18.0
-    #export PERL_MM_OPT=INSTALL_BASE=/isitools/CentOS-5/perl5.18.0/lib/5.18.0
-    #export PERL5LIB='/isitools/CentOS-5/perl5.18.0/lib/5.18.0/lib/perl5:/isitools/CentOS-5/perl5.18.0/lib/5.18.0/x86_64-linux:/isitools/CentOS-5/perl5.18.0/lib/5.18.0:/isitools/CentOS-5/perl5.18.0/lib/5.18.0/x86_64-linux-thread-multi-ld'
-    #export PATH=/isitools/CentOS-5/perl5.18.0/bin:$PATH:
-    #fi
-
-    if  [ "$USER" != "root" ]; then
-        export PERL_LOCAL_LIB_ROOT=/isitools/CentOS-5/perl5.10.1/lib/5.10.1
-        export PERL_MB_OPT=/isitools/CentOS-5/perl5.10.1/lib/5.10.1
-        export PERL_MM_OPT=INSTALL_BASE=/isitools/CentOS-5/perl5.10.1/lib/5.10.1
-        export PERL5LIB='/isitools/CentOS-5/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/CentOS-5/perl5.10.1/lib/5.10.1/x86_64-linux:/isitools/CentOS-5/perl5.10.1/lib/5.10.1:/isitools/CentOS-5/perl5.10.1/lib/5.10.1/x86_64-linux-thread-multi-ld'
-        export PATH=/isitools/CentOS-5/perl5.10.1/bin:$PATH:
-    fi
-
-    if [ "$USER" = "mikec" ] || [ "$USER" = "ron" ]; then
-        #HOME=/isitools/perl5.18.2
-        #HOME=/w4home/mikec
-        export PERL_LOCAL_LIB_ROOT=/isitools/perl5.18.2/lib/5.18.2
-        export PERL_MB_OPT=/isitools/perl5.18.2/lib/5.18.2
-        export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.18.2/lib/5.18.2
-        export PERL5LIB='/isitools/perl5.18.2:/isitools/perl5.18.2/lib/5.18.2/lib/perl5:/isitools/perl5.18.2/lib/5.18.2/x86_64-linux:/isitools/perl5.18.2/lib/5.18.2:/isitools/perl5.18.2/lib/5.18.2/x86_64-linux-thread-multi-ld'
-        export PATH=/isitools/perl5.18.2/bin:$PATH:
-    fi
-
-    #echo $PATH
-esac
-
 ##### PYTHON virtual envs #####
 #export PATH=/opt:/opt/bin:$PATH
 #export WORKON_HOME=$HOME/.virtualenvs
@@ -187,7 +100,7 @@ esac
 #source /usr/bin/virtualenvwrapper.sh
 ##### CENTOS-6+7 #####
 #case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.0|7.2|7.3|7.4)
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511)
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611)
     #if  [ "$USER" != "mikec" ]; then
     export PATH=/isitools/Python2.7.4/bin:$PATH
     export WORKON_HOME=$HOME/.virtualenvs
@@ -207,23 +120,13 @@ case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511)
     #fi
 
 esac
-##### CENTOS-5 #####
-case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9|5.10)
-    export PATH=/isitools/CentOS-5/Python2.7.4/bin:$PATH
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PYTHONPATH=/isitools/CentOS-5/Python2.7.4/bin:$PYTHONPATH
-    #export VIRTUALENVWRAPPER_PYTHON=/isitools/CentOS-5/Python2.7.4/bin/python
-    #export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/CentOS-5/Python2.7.4/bin/virtualenv
-    source /isitools/CentOS-5/virtualenvwrapper-3.6/virtualenvwrapper.sh
-esac
-
 ##### R env variables #####
 ##### CENTOS-6+7 #####
 #export PATH=/opt/R-2.15.2:$PATH
 #export R_LIBS=/opt/R-2.15.2/library
 #export R_LIBS_USER=/opt/R-packages
 #case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.0|7.2|7.3|7.4)
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511)
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611)
     if [ "$USER" != "galaxy" ]; then
         # R-3.0.2
         #export R_HOME=/isitools/R-3.0.2/lib64/R
