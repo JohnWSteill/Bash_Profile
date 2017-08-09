@@ -1,0 +1,19 @@
+
+alias glp="git log --pretty=format:\"%cr: %s\""
+alias glg="git log --oneline --decorate --graph --all"
+alias glgc="git log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s\""
+
+function git_ls_timestamp {
+    for fn in `ls`; do
+        `git log --follow $fn`
+    done
+}
+function git_ls_l {
+    for fn in `ls`; do 
+        echo "$(git log -1 --format="%ai" -- $fn) $fn"
+    done
+} 
+export -f git_ls_l
+
+alias git_ls="git_ls_l | sort"
+

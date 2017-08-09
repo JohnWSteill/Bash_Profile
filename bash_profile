@@ -1,6 +1,11 @@
-source $HOME/bin/Bash_Profile/isitools_bash_profile
-#source /isitools/.bash_profile
-#source /w4home/mikec/.bash_profile/.bash_profile_perl5.18.2 
+BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
+
+# My version of /isitools/.bash_profile
+# Also keep an eye on /w4home/mikec/.bash_profile/*
+source $BASH_PROFILE_HOME/isitools_bash_profile
+
+source $BASH_PROFILE_HOME/git_profile
+
 alias envp="source ~/bin/GupEnv/bin/activate"
 alias envp_off="source ~/bin/GupEnv/bin/deactivate"
 export PYTHONPATH=~/bin:$PYTHONPATH 
@@ -9,9 +14,6 @@ shopt -s histappend    # append to history, don't overwrite it
 PS1='\A  \h  \W > '
 
 alias ls="ls --group-directories-first --color='auto'"
-alias glp="git log --pretty=format:\"%cr: %s\""
-alias glg="git log --oneline --decorate --graph --all"
-alias glgc="git log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s\""
 alias pta="python -m unittest discover"
 alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
@@ -76,18 +78,6 @@ function dontUsePerl510 {
 }
 export -f dontUsePerl510
 
-function git_ls_timestamp {
-    for fn in `ls`; do
-        `git log --follow $fn`
-    done
-}
-function git_ls_a {
-    for fn in `ls`; do 
-        echo "$(git log -1 --format="%ad" -- $fn) $fn"
-    done
-} 
-export -f git_ls_a
-
 
 function use_perl_518 {
     dontUsePerl510
@@ -102,10 +92,3 @@ function use_perl_518 {
 }
 export -f use_perl_518
 envp
-# Project: Use Perl 5.22
-# 1) CHange Existing 5.18 Local stuff to explicitly ref 5.18
-#      a) install_local_perl -> install_local_perl_518
-#      b) PERL_LOCAL_LIB_ROOT "$HOME/lib/perl5.18" & 
-#            move it into approp fn
-# Reinstall, verify works.
-# 2) Duplicate everything, subbing 22 for 18 where appropriate.
