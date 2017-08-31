@@ -1,0 +1,16 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+export PATH=/isitools/Python3.5.1/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export PYTHONPATH=/isitools/Python3.5.1/bin:$PYTHONPATH
+export VIRTUALENVWRAPPER_PYTHON=/isitools/Python3.5.1/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python3.5.1/bin/virtualenv
+source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
+

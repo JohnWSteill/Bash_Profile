@@ -1,0 +1,47 @@
+#source /w4home/mikec/.bash_profile
+source /isitools/.bash_profile
+
+#export R_LIBS="/isitools/R-3.2.2/lib64/R/library"
+#export RLIBS="/isitools/R-3.2.2/lib64/R/library"
+#export R_HOME="/isitools/R-3.2.2/bin/R"
+#export RHOME="/isitools/R-3.2.2/bin/R"
+#export R_LIBS_USER="/isitools/R-packages_3.2.2"
+#export PATH=~/R_libs:/isitools/R-3.2.2/lib64/R/bin:/isitools/R-3.2.2/lib64/R/lib:$PATH
+
+export R_LIBS="/isitools/R-3.1.3/lib64/R/library"
+export RLIBS="/isitools/R-3.1.3/lib64/R/library"
+export R_HOME="/isitools/R-3.1.3/bin/R"
+export RHOME="/isitools/R-3.1.3/bin/R"
+export R_LIBS_USER="/isitools/R-packages_3.1.3"
+export PATH=~/R_libs:/isitools/R-3.1.3/lib64/R/bin:/isitools/R-3.1.3/lib64/R/lib:$PATH
+
+
+#export R_LIBS="/isitools/R-313/lib64/R/library"
+#export RLIBS="/isitools/R-313/lib64/R/library"
+#export R_HOME="/isitools/R-313/bin/R"
+#export RHOME="/isitools/R-313/bin/R"
+#export R_LIBS_USER="/isitools/R-packages_3.1.3"
+#export PATH=~/R_libs:/isitools/R-313/lib64/R/bin:/isitools/R-313/lib64/R/lib:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+
+#export HOME = "/isitools/perl5.22.0"
+export HOME="/w4home/mikec"
+
+#if [ "$USER" = "mikec" ]; then
+##HOME=/isitools/perl5.22.0
+#export PERL_LOCAL_LIB_ROOT=/isitools/perl5.22.0/lib/5.22.0
+#export PERL_MB_OPT=/isitools/perl5.22.0/lib/5.22.0
+#export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.22.0/lib/5.22.0
+#export PERL5LIB='/isitools/perl5.22.0:/isitools/perl5.22.0/lib/5.22.0/lib/perl5:/isitools/perl5.22.0/lib/5.22.0/x86_64-linux:/isitools/perl5.22.0/lib/5.22.0:/isitools/perl5.22.0/lib/5.22.0/x86_64-linux-thread-multi-ld'
+#export PATH=/isitools/perl5.22.0/bin:$PATH:
+#fi
+
+if [ "$USER" = "mikec" ]; then
+#HOME=/isitools/perl5.18.2
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.18.2/lib/5.18.2
+export PERL_MB_OPT=/isitools/perl5.18.2/lib/5.18.2
+export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.18.2/lib/5.18.2
+export PERL5LIB='/isitools/perl5.18.2:/isitools/perl5.18.2/lib/5.18.2/lib/perl5:/isitools/perl5.18.2/lib/5.18.2/x86_64-linux:/isitools/perl5.18.2/lib/5.18.2:/isitools/perl5.18.2/lib/5.18.2/x86_64-linux-thread-multi-ld'
+export PATH=/isitools/perl5.18.2/bin:$PATH:
+fi
+
+

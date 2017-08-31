@@ -1,0 +1,2 @@
+export LD_LIBRARY_PATH="/isitools/R-3.3.3/lib:/isitools/R-3.3.3/bin:/isitools/R-packages_3.3.3:/isitools/R-packages_3.3.3/zlib-1.2.8/lib:/isitools/R-packages_3.3.3/bzip2-1.0.6/lib:/isitools/R-packages_3.3.3/xz-5.2.2/lib:/isitools/R-packages_3.3.3/pcre-8.38/lib:/isitools/R-packages_3.3.3/curl-7.47.1/lib:/isitools/gcc4.9.4/lib:/isitools/gcc4.9.4/lib64:"
+

@@ -1,0 +1,15 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+#Ron's PCA stuff:
+export R_HOME=/isitools/R-3.1.3_PCA
+export PATH=/isitools/R-3.1.3_PCA/lib64/R:/isitools/R-3.1.3_PCA/bin:$PATH
+export R_LIBS=/isitools/R-3.1.3_PCA/lib64/R #DEFAULT SYSTEM R LIBRARY
+export R_LIBS_USER=/isitools/R-packages_3.1.3_PCA:/isitools/R-3.1.3_PCA/lib64/R
+export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:$R_HOME/bin

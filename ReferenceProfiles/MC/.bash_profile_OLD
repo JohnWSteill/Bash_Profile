@@ -1,0 +1,85 @@
+REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//`
+echo "This is a CentOS $REV machine"
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	        . ~/.bashrc
+			fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:/isitools:/opt/bin:$HOME/bin:/usr/local/MATLAB/R2010b/bin:/tmp:
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9)
+PATH=$PATH:/isitools:/opt/bin:$HOME/bin:/usr/local/MATLAB/R2010b/bin:/tmp:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/bin:/bin:/usr/lib64
+esac
+case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9)
+export PATH=/isitools/CentOS-5:/opt/bin:$HOME/bin:/usr/local/MATLAB/R2010b/bin:/tmp:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/bin:/bin:/usr/lib64
+
+esac
+
+# Perl virtual env
+#export PERL_LOCAL_LIB_ROOT=/w4home/mikec/perl5;
+#export PERL_MB_OPT=--install_base /w4home/mikec/perl5;
+#export PERL_MM_OPT=INSTALL_BASE=/w4home/mikec/perl5;
+#export PERL5LIB=/w4home/mikec/perl5/lib/perl5/x86_64-linux-thread-multi-ld:/w4home/mikec/perl5/lib/perl5;
+#export PATH=/w4home/mikec/perl5/bin:$PATH;
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9)
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.16.3/lib/5.16.3;
+export PERL5LIB=/isitools/perl5.16.3/lib/5.16.3;
+export PATH=/isitools/perl5.16.3/bin:$PATH;
+echo $PATH
+esac
+case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9)
+export PERL_LOCAL_LIB_ROOT=/isitools/CentOS-5/perl5.16.3/lib/5.16.3
+export PERL5LIB=/isitools/CentOS-5/perl5.16.3/lib/5.16.3
+export PATH=/isitools/CentOS-5/perl5.16.3/bin:$PATH:
+esac
+
+# Python virtual envs
+#export PATH=/opt:/opt/bin:$PATH
+#export WORKON_HOME=$HOME/.virtualenvs
+#source /opt/bin/virtualenvwrapper.sh
+#source /usr/bin/virtualenvwrapper.sh
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9)
+export PATH=/isitools/Python2.7.4/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export PYTHONPATH=/isitools/Python2.7.4/bin:$PYTHONPATH
+source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
+esac
+case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9)
+export PATH=/isitools/CentOS-5/Python2.7.4/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export PYTHONPATH=/isitools/CentOS-5/Python2.7.4/bin:$PYTHONPATH
+source /isitools/CentOS-5/virtualenvwrapper-3.6/virtualenvwrapper.sh
+esac
+
+# R env variables
+#export PATH=/opt/R-2.15.2:$PATH
+#export R_LIBS=/opt/R-2.15.2/library
+#export R_LIBS_USER=/opt/R-packages
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9)
+export R_HOME=/isitools/R-2.15.2/lib64/R
+export RHOMES=/isitools/R-2.15.2/lib64/R
+export RHOME=/isitools/R-2.15.2/lib64/R
+export PATH=/isitools/R-2.15.2/lib64/R:/isitools/R-2.15.2/bin:$PATH
+#export R_LIBS=/isitools/R-2.15.2/lib64/R #DEFAULT SYSTEM R LIBRARY
+export R_LIBS_USER=/isitools/R-packages
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_HOME/bin
+esac
+case ${REV} in 5.0|5.1|5.2|5.3|5.4|5.5|5.6|5.7|5.8|5.9)
+export R_HOME=/isitools/CentOS-5/R-2.15.2/lib64/R
+export RHOMES=/isitools/CentOS-5/R-2.15.2/lib64/R
+export RHOME=/isitools/CentOS-5/R-2.15.2/lib64/R
+export PATH=/isitools/CentOS-5/R-2.15.2/lib64/R:/isitools/CentOS-5/R-2.15.2/bin:$PATH
+#export R_LIBS=/isitools/CentOS-5/R-2.15.2/lib64/  #DEFAULT SYSTEM R LIBRARY
+export R_LIBS_USER=/isitools/CentOS-5/R-packages
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_HOME/bin
+esac
+
+echo $PATH
+export PATH
+unset USERNAME
+
+umask 0002

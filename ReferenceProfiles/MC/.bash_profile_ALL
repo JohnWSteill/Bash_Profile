@@ -1,0 +1,5 @@
+source /w4home/mikec/.bash_profile/.bash_profile_gcc4.9
+source /w4home/mikec/.bash_profile/.bash_profile_R-3.3.3
+source /w4home/mikec/.bash_profile/.bash_profile_python2.7.12
+source /w4home/mikec/.bash_profile/.bash_profile_perl5.18.2
+source /w4home/mikec/.bash_profile/.bash_profile_LD_LIBRARY_PATH

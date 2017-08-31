@@ -1,0 +1,10 @@
+export PATH=""
+export PATH=/usr/bin:/bin:/usr/lib64:$HOME/bin:$PATH
+export PATH=/isitools:/isitools/perl5.18.0:/isitools/perl5.18.0/bin:/isitools/perl5.18.0/lib:/isitools/bowtie:/isitools/rsem:/isitools/trini
+ty:/isitools/blast/bin:/isitools/blat/bin:/isitools:/isitools/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/CASAVA_v1.8.2/b
+in:$PATH
+
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.18.0/lib/5.18.0
+export PERL_MB_OPT=/isitools/perl5.18.0/lib/5.18.0
+export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.18.0/lib/5.18.0                                                                             export PERL5LIB='/isitools/perl5.18.0/lib/5.18.0/lib/perl5:/isitools/perl5.18.0/lib/5.18.0/x86_64-linux:/isitools/perl5.18.0/lib/5.18.0:/isitools/perl5.18.0/lib/5.18.0/x86_64-linux-thread-multi-ld'                                                                                   export PATH=/isitools/perl5.18.0/bin:$PATH:
+

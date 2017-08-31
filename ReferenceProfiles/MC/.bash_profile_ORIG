@@ -1,0 +1,25 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	        . ~/.bashrc
+			fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+#export PERL_LOCAL_LIB_ROOT="/w4home/mikec/perl5";
+#export PERL_MB_OPT="--install_base /w4home/mikec/perl5";
+#export PERL_MM_OPT="INSTALL_BASE=/w4home/mikec/perl5";
+#export PERL5LIB="/w4home/mikec/perl5/lib/perl5/x86_64-linux-thread-multi-ld:/w4home/mikec/perl5/lib/perl5";
+#export PATH="/w4home/mikec/perl5/bin:$PATH";
+
+# Python virtual envs
+#export PATH=/opt/bin:$PATH
+#export WORKON_HOME=$HOME/.virtualenvs
+#source /opt/bin/virtualenvwrapper.sh
+
+export PATH
+unset USERNAME
+

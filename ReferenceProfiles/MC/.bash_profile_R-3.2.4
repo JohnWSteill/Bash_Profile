@@ -1,0 +1,17 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+# Default R-3.2.4 stuff:
+export R_HOME=/isitools/R-3.2.4
+export PATH=/isitools/R-3.2.4/lib64/R:/isitools/R-3.2.4/bin:$PATH
+export R_LIBS=/isitools/R-3.2.4/lib64/R #DEFAULT SYSTEM R LIBRARY
+export R_LIBS_USER=/isitools/R-packages_3.2.4
+export R_PROFILE=/isitools/R-3.2.4
+export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:$R_HOME/bin
+

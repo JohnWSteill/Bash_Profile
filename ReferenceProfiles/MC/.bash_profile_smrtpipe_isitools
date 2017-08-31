@@ -1,0 +1,1 @@
+export PATH="/isitools/pacbio/smrtlink/install/smrtlink-fromsrc_4.0.0.190159+190159-190159-189856-189856-189856/bundles/smrttools/smrtcmds/bin:$PATH"

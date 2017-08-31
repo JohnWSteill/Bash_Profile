@@ -1,0 +1,11 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local:/usr/local/bin:/usr/local/lib64:/opt:/opt/apache2:/opt/apache2/bin:
+

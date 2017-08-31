@@ -1,0 +1,86 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+export PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local:/usr/local/bin:/usr/local/lib64:
+
+export PATH=/isitools/perl5.10.1:/isitools/perl5.10.1/bin:/isitools/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/bowtie-0.12.9:/isitools/rsem-1.2.3:/isitools/trinityrnaseq_r2013-02-25:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat/bin:/isitools:/isitools/ncbi-blast-2.2.28+/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/GUP/gup:$PATH 
+
+export PATH=/isitools:/isitools/bowtie-0.12.9:/isitools/rsem-1.2.3:/isitools/trinityrnaseq_r20140413p1:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat/bin:/isitools:/isitools/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/meme/bin:/isitools/novocraft-3.02:/isitools/samtools:/isitools/bedtools-2.17.0/bin:/isitools/matrix2png_1.2.2/bin:/isitools/bowtie2-2.1.0:/isitools/bwa-0.7.5a:/isitools/clustalw2.1:/isitools/boost_1_53_0:/isitools/boost_1_53_0/bin.v2:/isitools/cufflinks:/isitools/miRanda3.3a/bin:/isitools/454/bin:/isitools/454/apps:/isitools/MaSuRCA2.2.1:/isitools/MaSuRCA2.2.1/lib:/isitools/MaSuRCA2.2.1/lib:/isitools/ucsc/linux.x86_64:/isitools/matlab-2013b/bin/:/isitools/matlab-2013b/:/isitools/fftw3.3.4:/isitools/fftw3.3.4/bin:/isitools/fftw3.3.4/lib:/isitools/csem-2.4:/isitools/sratoolkit.2.4.2-centos_linux64/bin:/isitools/swig-3.0.5:/isitools/hp-bootstrap/bin:/isitools/.cabal/bin:/isitools/fasta-36.3.8c/bin:$PATH 
+
+export PATH=/isitools/gcc4.9.4:/isitools/gcc4.9.4/bin:/isitools/gcc4.9.4/lib:/isitools/gcc4.9.4/lib64:/isitools/illumina/bcl2fastq2-v2.17.1.14/bin:/isitools/illumina/bcl2fastq2-v2.17.1.14:$PATH
+#export PATH=/isitools/gcc4.8.4:/isitools/gcc4.8.4/bin:/isitools/gcc4.8.4/lib:/isitools/gcc4.8.4/lib64:/isitools/illumina/bcl2fastq2-v2.17.1.14/bin:/isitools/illumina/bcl2fastq2-v2.17.1.14:$PATH
+#export PATH=/isitools/gcc4.7.4:/isitools/gcc4.7.4/bin:/isitools/gcc4.7.4/lib:/isitools/gcc4.7.4/lib64:/isitools/illumina/bcl2fastq2-v2.17.1.14/bin:/isitools/illumina/bcl2fastq2-v2.17.1.14:$PATH
+#export PATH=/isitools/gcc4.6.4:/isitools/gcc4.6.4/bin:/isitools/gcc4.6.4/lib:/isitools/gcc4.6.4/lib64:/isitools/illumina/bcl2fastq2-v2.17.1.14/bin:/isitools/illumina/bcl2fastq2-v2.17.1.14:$PATH
+
+export ISIHOME=/isitools
+export LD_LIBRARY_PATH=/isitools/gcc4.9.4/lib:/isitools/gcc4.9.4/lib64:/isitools/Python2.7.4/lib:$R_HOME/bin:$LD_LIBRARY_PATH
+
+# User specific environment and startup programs
+
+# Default python-2.7.4
+export PATH=/isitools/Python2.7.4/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export PYTHONPATH=/isitools/Python2.7.4/bin:$PYTHONPATH
+export VIRTUALENVWRAPPER_PYTHON=/isitools/Python2.7.4/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python2.7.4/bin/virtualenv
+source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
+
+# Default perl5.10.1
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.10.1/lib/5.10.1 
+export PERL_MB_OPT=/isitools/perl5.10.1/lib/5.10.1
+export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.10.1/lib/5.10.1
+export PERL5LIB='/isitools/perl5.10.1/lib/5.10.1/lib/perl5:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux:/isitools/perl5.10.1/lib/5.10.1:/isitools/perl5.10.1/lib/5.10.1/x86_64-linux-thread-multi-ld:/usr/lib64/perl5'
+export PATH=/isitools/CentOS-5:/isitools/CentOS-5/perl5.10.1/bin:/isitools/CentOS-5/perl5.10.1/lib:$PATH:
+
+# Default R-3.2.4
+export R_HOME=/isitools/R-3.2.4/lib64/R
+export RHOMES=/isitools/R-3.2.4/lib64/R
+export RHOME=/isitools/R-3.2.4/lib64/R
+export PATH=/isitools/R-3.2.4/lib64/R:/isitools/R-3.2.4/bin:$PATH
+export R_LIBS=/isitools/R-3.2.4/lib64/R #DEFAULT SYSTEM R LIBRARY
+export R_LIBS_USER=/isitools/R-packages_3.2.4
+export R_PROFILE=/isitools/R-3.2.4
+export R_PROFILE_USER=/w4home/mikec/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_HOME/bin
+
+# BOOST STUFF
+export BOOST_ROOT=/isitools/boost_1_61_0
+export BOOST_INCLUDEDIR=/isitools/boost_1_61_0
+export BOOST_LIBRARYDIR=/isitools/boost_1_61_0/stage/lib
+
+# GCC stuff
+alias cc="/isitools/gcc4.9.4/bin/gcc"
+alias g++="/isitools/gcc4.9.4/bin/g++"
+#export C_INCLUDE_PATH=/isitools/gcc4.9.4
+#export CPLUS_INCLUDE_PATH=/isitools/gcc4.9.4
+#export CPATH=/isitools/gcc4.9.4/include
+#export COMPILER_PATH=/isitools/gcc4.9.4/
+#export LIBRARY_PATH=/isitools/gcc4.9.4/lib64
+export CC=/isitools/gcc4.9.4/bin/gcc
+export CXX=/isitools/gcc4.9.4/bin/g++
+
+#alias cc="/isitools/gcc4.8.4/bin/gcc"
+#export C_INCLUDE_PATH=/isitools/gcc4.8.4
+#export CPLUS_INCLUDE_PATH=/isitools/gcc4.8.4
+#export CPATH=/isitools/gcc4.8.4
+#export CC=/isitools/gcc4.8.4/bin/gcc
+#export CXX=/isitools/gcc4.8.4/bin/g++
+#alias cc="/isitools/gcc4.7.4/bin/gcc"
+#export C_INCLUDE_PATH=/isitools/gcc4.7.4
+#export CPLUS_INCLUDE_PATH=/isitools/gcc4.7.4
+#export CPATH=/isitools/gcc4.7.4
+#export CC=/isitools/gcc4.7.4/bin/gcc
+#export CXX=/isitools/gcc4.7.4/bin/g++
+#alias cc="/isitools/gcc4.6.4/bin/gcc"
+#export C_INCLUDE_PATH=/isitools/gcc4.6.4
+#export CPLUS_INCLUDE_PATH=/isitools/gcc4.6.4
+#export CPATH=/isitools/gcc4.6.4
+#export CC=/isitools/gcc4.6.4/bin/gcc
+#export CXX=/isitools/gcc4.6.4/bin/g++
+
+
+

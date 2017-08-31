@@ -1,0 +1,22 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+export PATH=/isitools/Python3.5.2/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+#export PYTHONPATH=/isitools/Python3.5.2/bin: #$PYTHONPATH
+export PYTHONPATH=/mnt/isi4homes/mcollins/python3.5-env/bin: #$PYTHONPATH
+#export VIRTUALENVWRAPPER_PYTHON=/isitools/Python3.5.2/bin/python
+
+# run once to setup virtualenv for python 3.5 ; /isitools/Python3.5.2/bin/pyvenv ~/python3.5-env
+#export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python3.5.2/bin/virtualenv ; OLD
+#source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh ; OLD
+source ~/python3.5-env/bin/activate
+export VIRTUALENVWRAPPER_VIRTUALENV=~/python3.5-env
+
+

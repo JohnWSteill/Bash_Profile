@@ -1,0 +1,12 @@
+#!/bin/bash
+
+### use pigz
+gzip() {
+     pigz "$@"
+ }
+ export -f gzip
+ gunzip() {
+      unpigz "$@"
+  }
+  export -f gunzip
+
