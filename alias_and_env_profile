@@ -1,15 +1,11 @@
 #!/bin/bash
 
-alias envp="source ~/bin/GupEnv/bin/activate"
-alias envp_off="source ~/bin/GupEnv/bin/deactivate"
-export PYTHONPATH=~/bin:$PYTHONPATH 
+
 shopt -s histappend    # append to history, don't overwrite it
 
 PS1='\A  \h  \W > '
 
 alias ls="ls --group-directories-first --color='auto'"
-alias pta="python -m unittest discover"
-alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
 
 # History Stuff
@@ -41,7 +37,6 @@ path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
 path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
 
 
-envp
 ### use pigz
 gzip() {
 pigz "$@"
