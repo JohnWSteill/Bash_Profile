@@ -16,13 +16,14 @@ umask 0002
 export PATH=/isitools/trinityrnaseq_r2013-02-25:/isitools/ncbi-blast-2.2.28+/FastQC:$PATH #  Removed /isitools/GUP/gup:$PATH 
 export PATH=/isitools:/isitools/bowtie-0.12.9:/isitools/rsem-1.2.3:/isitools/trinityrnaseq_r20140413p1:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat/bin:/isitools:/isitools/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/CASAVA_v1.8.2/bin:/isitools/meme/bin:/isitools/novocraft-3.02:/isitools/samtools:/isitools/bedtools-2.17.0/bin:/isitools/matrix2png_1.2.2/bin:/isitools/bowtie2-2.1.0:/isitools/bwa-0.7.5a:/isitools/clustalw2.1:/isitools/boost_1_53_0:/isitools/boost_1_53_0/bin.v2:/isitools/cufflinks:/isitools/miRanda3.3a/bin:/isitools/454/bin:/isitools/454/apps:/isitools/MaSuRCA2.2.1:/isitools/MaSuRCA2.2.1/lib:/isitools/MaSuRCA2.2.1/lib:/isitools/ucsc/linux.x86_64:/isitools/matlab-2013b/bin/:/isitools/matlab-2013b/:/isitools/fftw3.3.4:/isitools/fftw3.3.4/bin:/isitools/fftw3.3.4/lib:/isitools/csem-2.4:/isitools/sratoolkit.2.4.2-centos_linux64/bin:/isitools/swig-3.0.5:/isitools/hp-bootstrap/bin:/isitools/.cabal/bin:/isitools/fasta-36.3.8c/bin:/isitools/shiny-server/bin/shiny-server:$PATH
 export ISIHOME=/isitools
-export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:$R_HOME/bin:/isitools/gcc4.8/isl0.12.2/lib:/isitools/Python2.7.4/lib
+export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:/isitools/gcc4.8/isl0.12.2/lib
 
 
 
 export PATH=/isitools/Python2.7.4/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONPATH=/isitools/Python2.7.4/bin:$PYTHONPATH
+export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:/isitools/Python2.7.4/lib
 export VIRTUALENVWRAPPER_PYTHON=/isitools/Python2.7.4/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python2.7.4/bin/virtualenv
 source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
@@ -40,6 +41,7 @@ export PATH=/isitools/R-3.1.3/lib64/R:/isitools/R-3.1.3/bin:$PATH
 export R_LIBS=/isitools/R-3.1.3/lib64/R #DEFAULT SYSTEM R LIBRARY
 export R_LIBS_USER=/isitools/R-packages_3.1.3
 export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:$R_HOME/bin
+export R_LIBS=${HOME}/lib/R_Lib:$R_LIBS
 
 export PATH
 unset USERNAME
