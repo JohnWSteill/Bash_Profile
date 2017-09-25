@@ -5,6 +5,8 @@ shopt -s histappend    # append to history, don't overwrite it
 
 PS1='\A  \h  \W > '
 
+
+alias nohup="nice -19 nohup"
 alias ls="ls --group-directories-first --color='auto'"
 alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
 
