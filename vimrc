@@ -23,8 +23,9 @@ endif
 call vundle#end()
 set t_Co=256   " This is may or may not needed.
 if on_mac
-    ""colorscheme molokai
-    colorscheme solarized
+    set guifont=Menlo\ Regular:h12
+    colorscheme molokai
+    ""colorscheme solarized
     ""colorscheme mayansmoke
 else
     colorscheme PaperColor
