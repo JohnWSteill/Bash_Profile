@@ -13,8 +13,8 @@ Plugin 'VundleVim/Vundle.Vim'
 "Plugin 'Valloric/YouCompleteMe'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
-    Plugin 'StanAngeloff/php.vim'
-    colorscheme PaperColor
+    "Plugin 'StanAngeloff/php.vim'
+    "colorscheme PaperColor
 else
     set guifont=Menlo\ Regular:h12
     colorscheme molokai
