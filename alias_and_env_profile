@@ -3,21 +3,34 @@
 
 PS1='\A  \h  \W > '
 
+if [ $onMac ] 
+then 
+    alias vi=mvim
+    export PATH="/Users/jsteill/anaconda/bin:$PATH"
 
+    # Setting PATH for Python 3.5
+    # The orginal version is saved in .bash_profile.pysave
+    PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+    export PATH
+    alias mysql="/Applications/MAMP/Library/bin/mysql"
+else
+    alias envp="source ~/.pyVirt/env/bin/activate"
+    alias envp_off="source ~/.pyVirt/env/bin/deactivate"
+fi
+
+alias ssh="ssh -o ServerAliveInterval=60"
+alias ls="ls -G"
+# Save and reload the history after each command finishes
+export HISTCONTROL="ignoreboth:erasedups" # no duplicate entries, cmds wth space
+shopt -s histappend
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+export HISTSIZE=10000                   # big big history
+export HISTFILESIZE=10000               # big big history
 alias nohup="nice -19 nohup"
 alias ls="ls --group-directories-first --color='auto'"
 alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
-
-# History Stuff
-# Save and reload the history after each command finishes
-export HISTCONTROL="ignoreboth" # no duplicate entries, cmds wth space
-shopt -s histappend
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
-HISTIGNORE='ls:bg:fg:history:logout'
-export HISTSIZE=10000                   # big big history
-export HISTFILESIZE=10000               # big big history
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
 
 function see_ls_colors {
     IFS=:     

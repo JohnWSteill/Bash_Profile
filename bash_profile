@@ -1,4 +1,11 @@
 #!/bin/bash
+if ([[ "$(uname -s)" == "Linux" ]]) 
+then
+    onMac=false
+else
+    onMac=true
+fi
+
 BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
 
 source $BASH_PROFILE_HOME/alias_and_env_profile
