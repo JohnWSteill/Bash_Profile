@@ -14,12 +14,13 @@ Plugin 'VundleVim/Vundle.Vim'
 Plugin 'Valloric/YouCompleteMe'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
+    Plugin 'StanAngeloff/php.vim'
 endif
 call vundle#end()
 set t_Co=256   " This is may or may not needed.
 if on_mac
-    colorscheme molokai
-    ""colorscheme solarized
+    ""colorscheme molokai
+    colorscheme solarized
     ""colorscheme mayansmoke
 else
     colorscheme PaperColor

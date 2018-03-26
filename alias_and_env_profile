@@ -1,8 +1,6 @@
 #!/bin/bash
 
 
-shopt -s histappend    # append to history, don't overwrite it
-
 PS1='\A  \h  \W > '
 
 
@@ -12,9 +10,10 @@ alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS 
 
 # History Stuff
 # Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-export HISTCONTROL=ignoreboth:erasedups  # no duplicate entries, cmds wth space
-HISTIGNORE='ls:bg:fg:history'
+export HISTCONTROL="ignoreboth" # no duplicate entries, cmds wth space
+shopt -s histappend
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+HISTIGNORE='ls:bg:fg:history:logout'
 export HISTSIZE=10000                   # big big history
 export HISTFILESIZE=10000               # big big history
 bind '"\e[A": history-search-backward'
