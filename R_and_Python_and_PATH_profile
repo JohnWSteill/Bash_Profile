@@ -24,7 +24,7 @@ function use_R {
 
 unset USERNAME
 
-if ! [ $onMac ] 
+if ! [ $onMac == true ] 
 then 
     REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//` 
     echo "This is a CentOS $REV machine"
