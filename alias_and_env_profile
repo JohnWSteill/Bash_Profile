@@ -3,7 +3,7 @@
 
 PS1='\A  \h  \W > '
 
-if [ $onMac ] 
+if [ $onMac == 'true' ] 
 then 
     alias vi=mvim
     export PATH="/Users/jsteill/anaconda/bin:$PATH"
