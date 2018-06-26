@@ -1,10 +1,10 @@
 #!/bin/bash
-if ([[ "$(uname -s)" == "Linux" ]]) 
-then
-    onMac=false
-else
-    onMac=true
-fi
+
+# any statement that doesn't evaluate as true crashes script:
+# https://www.davidpashley.com/articles/writing-robust-shell-scripts/
+set -e 
+
+[[ "$(uname -s)" == "Linux" ]] && onMac=false || onMac=true
 
 BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
 

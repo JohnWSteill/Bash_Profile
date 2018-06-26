@@ -18,6 +18,8 @@ else
     alias envp_off="source ~/.pyVirt/env/bin/deactivate"
 fi
 
+alias pta="python -m unittest discover"
+alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias ssh="ssh -o ServerAliveInterval=60"
 alias ls="ls -G"
 # Save and reload the history after each command finishes
