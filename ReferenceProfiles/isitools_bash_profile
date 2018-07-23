@@ -24,7 +24,7 @@ PATH=/usr/bin:/bin:/usr/lib64:/usr/include:$HOME/bin:$PATH
 umask 0002
 
 #####CENTOS-6+7#####
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708)
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708|7.5.1804)
     if [ "$USER" = "root" ]; then export HOME=/root
 export PATH=/usr/sbin:/usr/bin:/bin:/usr/lib64:$PATH
 fi
@@ -32,6 +32,7 @@ fi
 if [ "$USER" != "root" ] && [ "$USER" != "mikec" ] && [ "$USER" != "shiny" ]; then export HOME=/w5home/$USER
 export PATH=/isitools:/isitools/bam2fastx/build:/isitools/cmake3.8.1/bin:/isitools/perl5.10.1:/isitools/perl5.10.1/bin:/isitools/perl5.10.1/lib:/isitools/bowtie-0.12.9:/isitools/rsem-1.3.0/bin:/isitools/trinityrnaseq-Trinity-v2.3.2:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat:/isitools:/isitools/ncbi-blast-2.2.28+/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/CASAVA_v1.8.2/bin:/isitools/GUP/gup:$PATH 
 #export PATH=/isitools/perl5.18.2:/isitools/perl5.18.2/bin:/isitools/perl5.18.2/lib/5.18.2/lib/perl5:/isitools/bowtie-0.12.9:/isitools/rsem-1.3.0/bin:/isitools/trinityrnaseq-Trinity-v2.3.2:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat:/isitools:/isitools/ncbi-blast-2.2.28+/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/CASAVA_v1.8.2/bin:/isitools/GUP/gup:$PATH 
+
 export PATH=/isitools:/isitools/PCAME-4.2.3:/isitools/bam2fastx/build:/isitools/cmake3.8.1/bin:/isitools/bowtie-0.12.9:/isitools/trinityrnaseq-Trinity-v2.3.2:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat:/isitools:/isitools/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/CASAVA_v1.8.2/bin:/isitools/meme/bin:/isitools/novocraft-3.02:/isitools/samtools/bin:/isitool/samtools/share:/isitools/bedtools-2.17.0/bin:/isitools/matrix2png_1.2.2/bin:/isitools/bowtie2-2.1.0:/isitools/bwa-0.7.5a:/isitools/clustalw2.1:/isitools/boost_1_62_0:/isitools/boost_1_62_0/libs:/isitools/boost_1_62_0/include/boost:/isitools/cufflinks:/isitools/miRanda3.3a/bin:/isitools/454/bin:/isitools/454/apps:/isitools/MaSuRCA2.2.1:/isitools/MaSuRCA2.2.1/lib:/isitools/MaSuRCA2.2.1/lib:/isitools/ucsc/linux.x86_64:/isitools/matlab-2013b/bin/:/isitools/matlab-2013b/:/isitools/fftw3.3.4:/isitools/fftw3.3.4/bin:/isitools/fftw3.3.4/lib:/isitools/csem-2.4:/isitools/sratoolkit.2.8.2-1-centos_linux64/bin:/isitools/swig-3.0.5:/isitools/hp-bootstrap/bin:/isitools/.cabal/bin:/isitools/fasta-36.3.8c/bin:/isitools/illumina/bcl2fastq2-v2.17.1.14/bin:/isitools/usearch:/isitools/cdhit-master:/isitools/SOAPdenovo2-src-r240:/isitools/FALCON-integrate:/isitools/FALCON-integrate/scripts:/isitools/FALCON-integrate/fc_env/bin:/isitools/canu-1.5/Linux-amd64/bin:/isitools/tabix-0.2.6:/isitools/FALCON_unzip-master:/isitools/mummer4.0beta2/bin:/isitools/Reapr_1.0.18:/isitools/bamtools:/isitools/bamtools/bin:/isitools/bamtools/lib64:/isitools/augustus3.3:/isitools/augustus3.3/bin:/isitools/supernova-2.0.1:$PATH 
 export ISIHOME=/isitools
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_HOME/bin:/isitools/gcc4.8/isl0.12.2/lib:/isitools/Python2.7.4/lib
@@ -68,7 +69,7 @@ esac
 
 ##### PERL virtual env #####
 ##### CENTOS-6+7 #####
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708)
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708|7.5.1804)
 
 if  [ "$USER" = "root" ]; then
 echo "Logging on as root user"
@@ -113,7 +114,7 @@ esac
 #source /usr/bin/virtualenvwrapper.sh
 ##### CENTOS-6+7 #####
 #case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.0|7.2|7.3|7.4)
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708)
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708|7.5.1804)
 if  [ "$USER" != "mikec" ]; then
 export PATH=/isitools/Python2.7.12/bin:/isitools/Python2.7.12/lib/python2.7/site-packages:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
@@ -141,7 +142,7 @@ esac
 #export R_LIBS=/opt/R-2.15.2/library
 #export R_LIBS_USER=/opt/R-packages
 #case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.0|7.2|7.3|7.4)
-case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708)
+case ${REV} in 6.0|6.1|6.2|6.3|6.4|6.5|6.6|6.7|6.8|6.9|7.2.1511|7.3.1611|7.4.1708|7.5.1804)
 if [ "$USER" != "galaxy" ]; then
 # R-3.1.3
 export R_HOME=/isitools/R-3.1.3

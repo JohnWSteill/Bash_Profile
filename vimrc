@@ -1,35 +1,30 @@
-set nocompatible
-syntax on
-filetype off
-filetype plugin indent on
 let on_mac = ($HOME ==  '/Users/jsteill')
 let hostname = substitute(system('hostname'), '\n', '', '')
 let on_biostat = (hostname =~ "biostat")
-if on_mac
-    set rtp+=~/.vim/bundle/Vundle.vim
-    set guifont=Menlo\ Regular:h12
-elseif on_biostat
-    set rtp+=/ua/steill/.vim/bundle/Vundle.vim
-else
-    set rtp+=/w4home/jsteill/.vim/bundle/Vundle.vim
-endif
+
+set nocompatible	" Req'd for Vundle
+filetype off		" Req'd for Vundle, can turn on later
+syntax on
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" 	alternatively, pass a path where Vundle should install plugins
+"	call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.Vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
     Plugin 'StanAngeloff/php.vim'
-endif
-call vundle#end()
-set t_Co=256   " This is may or may not needed.
-if on_mac
+    colorscheme PaperColor
+else
     set guifont=Menlo\ Regular:h12
     colorscheme molokai
     ""colorscheme solarized
     ""colorscheme mayansmoke
-else
-    colorscheme PaperColor
 endif
+call vundle#end()
+filetype plugin indent on
+set t_Co=256   " This is may or may not needed.
+
 set tabstop=4 
 set softtabstop=4 
 set shiftwidth=4
