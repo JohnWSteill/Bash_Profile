@@ -1,0 +1,29 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+source /isitools/.bash_profile
+#source /w5home/mikec/.bash_profile/.bash_profile_perl5.26.1_homeMikec
+source /w5home/mikec/.bash_profile/.bash_profile_perl5.24.4_mcHomeLocal
+
+# JAVA
+ulimit -c unlimited
+
+#export HOME=/isitools/Apollo
+export PATH=/isitools/jdk1.8.0_162:/isitools/jdk1.8.0_162/bin:/home/mikec/Apollo:/isitools/Apollo:$PATH
+export HOME=/home/mikec
+
+export JAVA_HOME=/isitools/jdk1.8.0_162
+
+export CATALINA_OPTS="-Xmx12288m -Xms8192m \
+        -XX:ReservedCodeCacheSize=64m \
+        -XX:+UseG1GC \
+        -XX:+CMSClassUnloadingEnabled \
+        -Xloggc:$CATALINA_HOME/logs/gc.log \
+        -XX:+PrintHeapAtGC \
+        -XX:+PrintGCDetails \
+        -XX:+PrintGCTimeStamps"
