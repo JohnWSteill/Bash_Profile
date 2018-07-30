@@ -1,18 +1,55 @@
 #!/bin/bash
-function use_R {
-    Rver=$1
-    for p in ${PATH//:/ }; do
-        pp=`echo $p | awk '/R-[0-9]\.[0-9]\.[0-9]/{print $0 }'`
-        if [[ ! -z $pp ]] ; then
-            path_remove $pp
+DEFAULT_PYTHON="3.6.6"
+DEFAULT_R="3.1.3"
+DEFUALT_PERL="5.10.1"
+
+
+function remove_regex_els_from_path(){
+    regex=$1
+    p_list=$2
+    p_list_out=""
+
+    for p in ${p_list//:/ }; do
+        if ! [[ "$p" =~ $regex ]]; then
+            p_list_out="$p:$p_list_out"
         fi
     done
-    for p in ${LD_LIBRARY_PATH//:/ }; do
-        pp=`echo $p | awk '/R-[0-9]\.[0-9]\.[0-9]/{print $0 }'`
-        if [[ ! -z $pp ]] ; then
-            path_remove_ld $pp
-        fi
-    done
+    echo $p_list_out
+}
+
+function use_Python(){
+    if [ $# -eq 1 ]
+    then
+        Pver=$1
+    else
+        Pver=$DEFAULT_PYTHON
+    fi
+
+    export PATH=$(remove_regex_els_from_path "Python" $PATH)
+    export LD_LIBRARY_PATH=$(remove_regex_els_from_path \
+        "Python" $LD_LIBRARY_PATH)
+
+    Pver=Python$Pver
+    export PATH=/isitools/$Pver/bin:$PATH
+    export LD_LIBRARY_PATH=/isitools/$Pver/lib:$LD_LIBRARY_PATH
+    export PYTHONPATH=/isitools/$Pver/bin:$PYTHONPATH
+    export VIRTUALENVWRAPPER_PYTHON=/isitools/$Pver/bin/python
+    export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/$Pver/bin/virtualenv
+}
+
+function use_R() {
+    if [ $# -eq 1 ]
+    then
+        Rver=$1
+    else
+        Rver=$DEFAULT_R
+    fi
+    
+    R_regex='/R-[0-9]\.[0-9]\.[0-9]/'
+    export PATH=$(remove_regex_els_from_path $R_regex $PATH)
+    export LD_LIBRARY_PATH=$(remove_regex_els_from_path \
+        $R_regex $LD_LIBRARY_PATH)
+
     export R_HOME_base="/isitools/R-$Rver"
     export R_HOME="$R_HOME_base/lib64/R"
     export PATH=$R_HOME:$R_HOME_base/bin:$PATH
@@ -21,41 +58,29 @@ function use_R {
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_HOME/bin:$R_HOME/lib
 }
 
+function use_Perl(){
+    if [ $# -eq 1 ]
+    then
+        Pver=$1
+    else
+        Pver=$DEFAULT_PERL
+    fi
+    
+    Perl_regex='erl5'
+    export PATH=$(remove_regex_els_from_path $Perl_regex $PATH)
+    export LD_LIBRARY_PATH=$(remove_regex_els_from_path \
+        $R_regex $LD_LIBRARY_PATH)
 
-unset USERNAME
+    pl="perl$Pver"
+    export PERL5LIB="/isitools/$pl/lib/$Pver/:\
+        /isitools/$pl/lib/$Pver/lib/perl5:\
+        /isitools/$pl/lib/$Pver/x86_64-linux-thread-multi-ld:\
+        /usr/lib64/perl5"
+    export PERL_LOCAL_LIB_ROOT=/isitools/perl5.10.1/lib/5.10.1 
+    export PERL_MB_OPT=/isitools/perl5.10.1/lib/5.10.1
+    export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.10.1/lib/5.10.1
 
-if ! [ $onMac == true ] 
-then 
-    umask 0002
-    REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//` 
-    echo "This is a CentOS $REV machine"
-    #PATH=/usr/bin:/bin:/usr/lib64:$HOME/bin:$PATH
-    PATH=/usr/bin:/bin:/usr/lib64:$HOME/bin
-    export PATH=/isitools/Python3.6.6/bin:$PATH
-    # export PATH=/isitools:$PATH # No executables in top layer
-    # export PATH=/isitools/bowtie-0.12.9:/isitools/rsem-1.2.3:/isitools/trinityrnaseq_r20140413p1:/isitools/ncbi-blast-2.2.28+/bin:/isitools/blat/bin:/isitools:/isitools/FastQC:/isitools/rsem_eval_1.3:/isitools/STAR_2.3.0e:/isitools/CASAVA_v1.8.2/bin:/isitools/meme/bin:/isitools/novocraft-3.02:/isitools/samtools:/isitools/bedtools-2.17.0/bin:/isitools/matrix2png_1.2.2/bin:/isitools/bowtie2-2.1.0:/isitools/bwa-0.7.5a:/isitools/clustalw2.1:/isitools/boost_1_53_0:/isitools/boost_1_53_0/bin.v2:/isitools/cufflinks:/isitools/miRanda3.3a/bin:/isitools/454/bin:/isitools/454/apps:/isitools/MaSuRCA2.2.1:/isitools/MaSuRCA2.2.1/lib:/isitools/MaSuRCA2.2.1/lib:/isitools/ucsc/linux.x86_64:/isitools/matlab-2013b/bin/:/isitools/matlab-2013b/:/isitools/fftw3.3.4:/isitools/fftw3.3.4/bin:/isitools/fftw3.3.4/lib:/isitools/csem-2.4:/isitools/sratoolkit.2.4.2-centos_linux64/bin:/isitools/swig-3.0.5:/isitools/hp-bootstrap/bin:/isitools/.cabal/bin:/isitools/fasta-36.3.8c/bin:/isitools/shiny-server/bin/shiny-server:$PATH
-    export ISIHOME=/isitools
-    export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:/isitools/gcc4.8/isl0.12.2/lib
-    export WORKON_HOME=$HOME/.virtualenvs
-    #export PATH=/isitools/Python2.7.4/bin:$PATH
-    #export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:/isitools/Python2.7.4/lib
-    #export PYTHONPATH=/isitools/Python2.7.4/bin:$PYTHONPATH
-    #export VIRTUALENVWRAPPER_PYTHON=/isitools/Python2.7.4/bin/python
-    #export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python2.7.4/bin/virtualenv
-    export LD_LIBRARY_PATH=/$LD_LIBRARY_PATH:/isitools/Python3.6.6/lib
-    export PYTHONPATH=/isitools/Python3.6.6/bin:$PYTHONPATH
-    export PYTHONPATH=~/bin:$PYTHONPATH 
-    export VIRTUALENVWRAPPER_PYTHON=/isitools/Python3.6.6/bin/python
-    export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python3.6.6/bin/virtualenv
-    #source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
-    use_R 3.1.3 #DEFAULT SYSTEM R LIBRARY
-fi
-
-if [ $UID -gt 99 ] && [ "`id -gn`" = "`id -un`" ]; then
-    umask 002
-else
-    umask 022
-fi
+}
 
 
 
