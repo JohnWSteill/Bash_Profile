@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
 
 PS1='\A  \h  \W > '
 
