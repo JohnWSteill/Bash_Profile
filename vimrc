@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.Vim'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
     "Plugin 'StanAngeloff/php.vim'
-    "colorscheme PaperColor
+    colorscheme PaperColor
 else
     set guifont=Menlo\ Regular:h12
     colorscheme molokai

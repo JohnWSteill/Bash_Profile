@@ -7,7 +7,7 @@ source $BASH_PROFILE_HOME/git_profile
 source $BASH_PROFILE_HOME/R_Python_and_Perl_Envs_profile
 source $BASH_PROFILE_HOME/alias_and_env_profile
 
-if ! [ $onMac =#= true ] 
+if ! [ $onMac == true ] 
 then 
     umask 0002
     REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//` 
