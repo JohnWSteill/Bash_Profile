@@ -10,6 +10,7 @@ call vundle#begin()
 " 	alternatively, pass a path where Vundle should install plugins
 "	call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.Vim'
+Plugin 'ajh17/VimCompletesMe'
 "Plugin 'Valloric/YouCompleteMe'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
