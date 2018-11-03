@@ -1,0 +1,26 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+#export PATH=/isitools/R-packages_3.5.1:/isitools/R-packages_3.5.1:/zlib-1.2.8/bin:/isitools/R-packages_3.5.1/bzip2-1.0.6/bin:/isitools/R-packages_3.5.1/xz-5.2.2/bin:/isitools/R-packages_3.5.1/pcre-8.38/bin:/isitools/R-packages_3.5.1/curl-7.47.1/bin:$PATH
+#export LD_LIBRARY_PATH=/isitools/R-packages_3.5.1:/isitools/R-packages_3.5.1/zlib-1.2.8/lib:/isitools/R-packages_3.5.1/bzip2-1.0.6/lib:/isitools/R-packages_3.5.1/xz-5.2.2/lib:/isitools/R-packages_3.5.1/pcre-8.38/lib:/isitools/R-packages_3.5.1/curl-7.47.1/lib:$LD_LIBRARY_PATH 
+#export CFLAGS="-I/isitools/R-packages_3.5.1/zlib-1.2.8/include -I/isitools/R-packages_3.5.1/bzip2-1.0.6/include -I/isitools/R-packages_3.5.1/xz-5.2.2/include -I/isitools/R-packages_3.5.1/pcre-8.38/include -I/isitools/R-packages_3.5.1/curl-7.47.1/include" 
+#export LDFLAGS="-L/isitools/R-packages_3.5.1/zlib-1.2.8/lib -L/isitools/R-packages_3.5.1/bzip2-1.0.6/lib -L/isitools/R-packages_3.5.1/xz-5.2.2/lib -L/isitools/R-packages_3.5.1/pcre-8.38/lib -L/isitools/R-packages_3.5.1/curl-7.47.1/lib" 
+
+# use updated gcc compiler
+#export CC=/isitools/gcc4.9.4/bin/gcc 
+#export CXX=/isitools/gcc4.9.4/bin/g++ 
+
+# Default R-3.5.1 stuff:
+export R_HOME=/isitools/R-3.5.1
+export PATH=/isitools/R-3.5.1/lib64/R:/isitools/R-3.5.1/bin:$PATH
+export R_LIBS=/isitools/R-3.5.1/lib64/R #DEFAULT SYSTEM R LIBRARY
+#export R_LIBS_USER=/w4home/$USER/<createYourDirectory>
+export R_LIBS_USER=/isitools/R-3.5.1/lib64/R
+export R_PROFILE=/isitools/R-3.5.1
+export LD_LIBRARY_PATH=$R_HOME/lib:$R_HOME/bin:$LD_LIBRARY_PATH
+
