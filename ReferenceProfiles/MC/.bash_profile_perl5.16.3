@@ -1,0 +1,16 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.16.3/lib/5.16.3
+export PERL_MB_OPT=/isitools/perl5.16.3/lib/5.16.3
+export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.16.3/lib/5.16.3
+#export PERL5LIB='/isitools/perl5.16.3/lib/5.16.3/lib/perl5:/isitools/perl5.16.3/lib/5.16.3/x86_64-linux:/isitools/perl5.16.3/lib/5.16.3:/isitools/perl5.16.3/lib/5.16.3/x86_64-linux-thread-multi-ld'
+export PERL5LIB=/isitools/perl5.16.3/lib/5.16.3/lib/perl5
+export PATH=/isitools/perl5.16.3:/isitools/perl5.16.3/bin:/isitools/perl5.16.3/lib/5.16.3/lib/perl5:$PATH:
+

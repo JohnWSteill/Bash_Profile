@@ -1,0 +1,7 @@
+if [ "$USER" != "root" ]; then
+export PERL_LOCAL_LIB_ROOT=/isitools/perl5.20.0/lib/5.20.0
+export PERL_MB_OPT=/isitools/perl5.20.0/lib/5.20.0
+export PERL_MM_OPT=INSTALL_BASE=/isitools/perl5.20.0/lib/5.20.0
+export PERL5LIB='/isitools/perl5.20.0:/isitools/perl5.20.0/lib/5.20.0/lib/perl5:/isitools/perl5.20.0/lib/5.20.0/x86_64-linux:/isitools/perl5.20.0/lib/5.20.0:/isitools/perl5.20.0/lib/5.20.0/x86_64-linux-thread-multi-ld'
+export PATH=/isitools/perl5.20.0/bin:$PATH:
+fi

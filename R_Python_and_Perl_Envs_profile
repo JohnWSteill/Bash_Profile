@@ -1,0 +1,112 @@
+#!/bin/bash
+export DEFAULT_PYTHON="3.6.6"
+export DEFAULT_R="3.4.1"
+export DEFAULT_PERL="5.16.3"
+
+
+function remove_regex_els_from_path(){
+    regex=$1
+    p_list=$2
+    p_list_out=()
+    for p in ${p_list//:/ }; do
+        if ! [[ "$p" =~ $regex ]]; then
+            p_list_out=(${p_list_out[@]} $p)
+        fi
+    done
+    echo $(IFS=: ; echo "${p_list_out[*]}")
+}
+
+function use_Python(){
+    if [ $# -eq 1 ]
+    then
+        Pver=$1
+    else
+        Pver=$DEFAULT_PYTHON
+    fi
+
+    export PATH=$(remove_regex_els_from_path "Python" $PATH)
+    export LD_LIBRARY_PATH=$(remove_regex_els_from_path \
+        "Python" $LD_LIBRARY_PATH)
+
+    Pver=Python$Pver
+    export PATH=/isitools/$Pver/bin:$PATH
+    export LD_LIBRARY_PATH=/isitools/$Pver/lib:$LD_LIBRARY_PATH
+    export PYTHONPATH=/isitools/$Pver/bin:$PYTHONPATH
+    export VIRTUALENVWRAPPER_PYTHON=/isitools/$Pver/bin/python
+    export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/$Pver/bin/virtualenv
+    echo "Using $Pver"
+}
+export -f use_Python
+
+function use_R() {
+    if [ $# -eq 1 ]
+    then
+        Rver=$1
+    else
+        Rver=$DEFAULT_R
+    fi
+    
+    R_regex='/R-[0-9]\.[0-9]\.[0-9]/'
+    export PATH=$(remove_regex_els_from_path $R_regex $PATH)
+    export LD_LIBRARY_PATH=$(remove_regex_els_from_path \
+        $R_regex $LD_LIBRARY_PATH)
+
+    export R_HOME_base="/isitools/R-$Rver"
+    export R_HOME="$R_HOME_base/lib64/R"
+    export PATH=$R_HOME:$R_HOME_base/bin:$PATH
+    export R_LIBS=${HOME}/lib/R_Lib:$R_HOME
+    export R_LIBS_USER=/isitools/R-packages_$Rver
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_HOME/bin:$R_HOME/lib
+    echo "Using R-$Rver"
+}
+export -f use_R
+
+function use_Perl(){
+    if [ $# -eq 1 ]
+    then
+        Pver=$1
+    else
+        Pver=$DEFAULT_PERL
+    fi
+    
+    Perl_regex='erl5'
+    export PATH=$(remove_regex_els_from_path $Perl_regex $PATH)
+    export LD_LIBRARY_PATH=$(remove_regex_els_from_path \
+        $Perl_regex $LD_LIBRARY_PATH)
+
+    pl="perl$Pver"
+    export PATH="/isitools/$pl/bin:/isitools/$pl/lib:$PATH"
+    export PERL5LIB="\
+/isitools/$pl/lib/$Pver/:\
+/isitools/$pl/lib/$Pver/lib/perl5:\
+/isitools/$pl/lib/$Pver/x86_64-linux:\
+/isitools/$pl/lib/$Pver/x86_64-linux-thread-multi-ld:\
+/usr/lib64/perl5"
+    export PERL_LOCAL_LIB_ROOT="/isitools/$pl/lib/$Pver"
+    export PERL_MB_OPT="--install_base $PERL_LOCAL_LIB_ROOT"
+    export PERL_MM_OPT=INSTALL_BASE=$PERL_LOCAL_LIB_ROOT
+
+    echo "Using $pl"
+}
+export -f use_Perl
+
+function delete_local_perl {
+    rm -rf $HOME/.cpan $HOME/.local/share/.cpan $PERL_LOCAL_LIB_ROOT/*
+}
+export -f delete_local_perl
+
+function install_local_perl {
+    delete_local_perl
+    use_perl_518;
+    mkdir -p $PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+    perl -MCPAN -e 'install Bundle::CPAN'
+    #cpan Text::NSP::Measures::2D::Fisher
+    cpan Text::NSP::Measures::2D::Fisher::left
+    cpan Class::Std
+    cpan DateTime
+    wget -P $PERL_LOCAL_LIB_ROOT http://search.cpan.org/CPAN/authors/id/S/SW/SWALTERS/SOAP-WSDL-3.003.tar.gz
+    tar -zxf $PERL_LOCAL_LIB_ROOT/SOAP-WSDL-3.003.tar.gz -C $PERL_LOCAL_LIB_ROOT
+    perl $PERL_LOCAL_LIB_ROOT/SOAP-WSDL-3.003/bin/wsdl2perl.pl -b $PERL_LOCAL_LIB_ROOT http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl
+}
+

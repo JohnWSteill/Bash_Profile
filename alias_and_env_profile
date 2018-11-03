@@ -1,24 +1,8 @@
 #!/bin/bash
 
+export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
 
 PS1='\A  \h  \W > '
-
-if [ $onMac == 'true' ] 
-then 
-    alias vi=mvim
-    export PATH="/Users/jsteill/anaconda/bin:$PATH"
-
-    # Setting PATH for Python 3.5
-    # The orginal version is saved in .bash_profile.pysave
-    PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-    export PATH
-    alias mysql="/Applications/MAMP/Library/bin/mysql"
-    alias ls="ls -G"
-else
-    alias envp="source ~/.pyVirt/env/bin/activate"
-    alias envp_off="source ~/.pyVirt/env/bin/deactivate"
-    alias ls="ls --group-directories-first --color='auto'"
-fi
 
 alias ssh="ssh -o ServerAliveInterval=60"
 # Save and reload the history after each command finishes
@@ -31,6 +15,21 @@ export HISTSIZE=10000                   # big big history
 export HISTFILESIZE=10000               # big big history
 alias nohup="nice -19 nohup"
 alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
+
+
+if [ $onMac == 'true' ] 
+then 
+    alias vi=mvim
+    export PATH="/Users/jsteill/anaconda/bin:$PATH"
+    # Setting PATH for Python 3.5
+    # The orginal version is saved in .bash_profile.pysave
+    PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+    export PATH
+    alias mysql="/Applications/MAMP/Library/bin/mysql"
+    exit 1
+fi
+
+# -----------------------   For MIR Machines: -------------------------------
 
 function see_ls_colors {
     IFS=:     
@@ -51,13 +50,34 @@ path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
 path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
 path_remove_ld ()  { export LD_LIBRARY_PATH=`echo -n $LD_LIBRARY_PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
 
+function use_Bowtie() {
+    if [ $# -eq 1 ]
+    then
+        Bver=$1
+    else
+        Bver="1.2.2"
+    fi
+    B="bowtie-$Bver"
+    export PATH="/isitools/$B:$PATH"
+    echo "Using $B"
+}
+export -f use_Bowtie
 
 ### use pigz
 gzip() {
-pigz "$@"
+    pigz "$@"
 }
 export -f gzip
 gunzip() {
-unpigz "$@"
+    unpigz "$@"
 }
 export -f gunzip
+
+alias envp="source ~/.pyVirt/env/bin/activate"
+alias envp_off="source ~/.pyVirt/env/bin/deactivate"
+alias p366="use_Python 3.6.6; cd ~/GUP ; source $WORKON_HOME/P366/bin/activate"
+alias pta="python -m unittest discover"
+alias aa8="autopep8 --in-place --aggressive --aggressive "
+alias aa8g="autopep8 --in-place --aggressive --aggressive $HOME/GUP/gup/*.py $HOME/GUP/gup/gup/*.py $HOME/GUP/gup/gup/tests/*.py"
+use_Bowtie 
+

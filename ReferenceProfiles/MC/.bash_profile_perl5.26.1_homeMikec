@@ -1,0 +1,16 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+export PERL_LOCAL_LIB_ROOT=/home/mikec/perl5.26.1/lib/5.26.1
+export PERL_MB_OPT=/home/mikec/perl5.26.1/lib/5.26.1
+export PERL_MM_OPT=INSTALL_BASE=/home/mikec/perl5.26.1/lib/5.26.1
+#export PERL5LIB='/home/mikec/perl5.26.1/lib/5.26.1/lib/perl5:/home/mikec/perl5.26.1/lib/5.26.1/x86_64-linux:/home/mikec/perl5.26.1/lib/5.26.1:/home/mikec/perl5.26.1/lib/5.26.1/x86_64-linux-thread-multi-ld'
+export PERL5LIB=/home/mikec/perl5.26.1/lib/5.26.1/lib/perl5
+export PATH=/home/mikec/perl5.26.1:/home/mikec/perl5.26.1/bin:/home/mikec/perl5.26.1/lib/5.26.1/lib/perl5:$PATH:
+

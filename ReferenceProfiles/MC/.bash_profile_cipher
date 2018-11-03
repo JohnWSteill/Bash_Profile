@@ -1,0 +1,23 @@
+# install cipher
+# 
+# atac seq workflow:
+# https://cipher.readthedocs.io/en/latest/atac.html
+
+#wget https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh
+
+#bash Anaconda2-4.3.1-Linux-x86_64.sh
+# conda install -c bioconda nextflow fastqc bbmap star hisat2 bowtie2 bwa multiqc macs2 deeptools epic preseq samtools sambamba bedtools bedops stringtie subread
+# conda install -c bioconda nextflow
+
+#R
+#install.packages(c("data.table", "ggplot2", "gplots"))
+#install.packages("http://hartleys.github.io/QoRTs/QoRTs_LATEST.tar.gz", repos=NULL, type="source")
+#source("https://bioconductor.org/biocLite.R")
+#biocLite()
+#biocLite(c("ChIPQC", "RUVSeq", "ChIPseeker"))
+
+source /w4home/mikec/.bash_profile/.bash_profile_R-3.3.3
+
+export PATH="/isitools/cipher-workflow-platform-master/anaconda2/bin:/isitools/singularity-2.3.2/bin:/isitools/singularity-2.3.2:/isitools/BBMap:/isitools/BBMap/sh:$PATH"
+export PYTHONPATH=/isitools/cipher-workflow-platform-master/anaconda2/bin::$PYTHONPATH
+
