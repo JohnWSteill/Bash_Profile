@@ -14,7 +14,6 @@ bind '"\e[B": history-search-forward'
 export HISTSIZE=10000                   # big big history
 export HISTFILESIZE=10000               # big big history
 alias nohup="nice -19 nohup"
-alias ls="ls --group-directories-first --color='auto'"
 alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
 alias vi="/isitools/vim8/bin/vim"
 
