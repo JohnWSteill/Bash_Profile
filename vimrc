@@ -10,8 +10,9 @@ call vundle#begin()
 " 	alternatively, pass a path where Vundle should install plugins
 "	call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.Vim'
-Plugin 'ajh17/VimCompletesMe'
-"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ajh17/VimCompletesMe'
+Plugin 'Valloric/YouCompleteMe'
+Plugin '2072/PHP-Indenting-for-VIm'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
     "Plugin 'StanAngeloff/php.vim'
@@ -23,6 +24,7 @@ else
     ""colorscheme mayansmoke
 endif
 call vundle#end()
+execute pathogen#infect()
 filetype plugin indent on
 set t_Co=256   " This is may or may not needed.
 
