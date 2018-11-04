@@ -1,4 +1,12 @@
 #!/bin/bash
+#!/bin/bash
+if ([[ "$(uname -s)" == "Linux" ]])
+then
+    onMac=false
+else
+    onMac=true
+fi
+
 
 PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib
 [[ "$(uname -s)" == "Linux" ]] && onMac=false || onMac=true
