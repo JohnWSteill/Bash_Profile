@@ -1,17 +1,10 @@
 #!/bin/bash
-#!/bin/bash
-if ([[ "$(uname -s)" == "Linux" ]])
-then
-    onMac=false
-else
-    onMac=true
-fi
-
 
 PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib
 [[ "$(uname -s)" == "Linux" ]] && onMac=false || onMac=true
 BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
 source $BASH_PROFILE_HOME/git_profile
+
 source $BASH_PROFILE_HOME/R_Python_and_Perl_Envs_profile
 source $BASH_PROFILE_HOME/alias_and_env_profile
 
