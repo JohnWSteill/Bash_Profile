@@ -76,6 +76,7 @@ export -f gunzip
 
 alias envp="source ~/.pyVirt/env/bin/activate"
 alias envp_off="source ~/.pyVirt/env/bin/deactivate"
+alias p366="use_Python 3.6.6; export PYTHONPATH=$HOME/GUP/gup/:$PYTHONPATH; cd ~/PROJ ; source $WORKON_HOME/P366/bin/activate"
 alias p366="use_Python 3.6.6; cd ~/GUP ; source $WORKON_HOME/P366/bin/activate"
 alias pta="python -m unittest discover"
 alias aa8="autopep8 --in-place --aggressive --aggressive "
