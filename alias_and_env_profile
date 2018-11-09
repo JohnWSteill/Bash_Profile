@@ -19,15 +19,17 @@ alias vi="/isitools/vim8/bin/vim"
 
 
 if [ $onMac == 'true' ] 
-then 
+then
+
     alias vi=mvim
     export PATH="/Users/jsteill/anaconda/bin:$PATH"
     # Setting PATH for Python 3.5
     # The orginal version is saved in .bash_profile.pysave
     PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+    PATH="/usr/local/bin:$PATH"  
     export PATH
     alias mysql="/Applications/MAMP/Library/bin/mysql"
-    exit 1
+    return
 fi
 
 # -----------------------   For MIR Machines: -------------------------------

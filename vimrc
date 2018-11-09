@@ -24,7 +24,9 @@ else
     ""colorscheme mayansmoke
 endif
 call vundle#end()
-execute pathogen#infect()
+if !on_mac
+    execute pathogen#infect()
+endif
 filetype plugin indent on
 set t_Co=256   " This is may or may not needed.
 
