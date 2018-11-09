@@ -29,6 +29,8 @@ if !on_mac
 endif
 filetype plugin indent on
 set t_Co=256   " This is may or may not needed.
+set backspace=indent,eol,start
+
 
 set tabstop=4 
 set softtabstop=4 
