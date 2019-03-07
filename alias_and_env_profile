@@ -3,6 +3,7 @@
 export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
 
 PS1='\A  \h  \W > '
+PS1='\[\e[1;91m\]\A  \h  \W\[\e[0m\] > '
 
 alias ssh="ssh -o ServerAliveInterval=60"
 # Save and reload the history after each command finishes
