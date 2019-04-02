@@ -1,6 +1,7 @@
 let on_mac = ($HOME ==  '/Users/jsteill')
 let hostname = substitute(system('hostname'), '\n', '', '')
 let on_biostat = (hostname =~ "biostat")
+let g:ycm_server_python_interpreter="/usr/bin/python"
 
 set nocompatible	" Req'd for Vundle
 filetype off		" Req'd for Vundle, can turn on later
