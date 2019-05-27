@@ -19,4 +19,5 @@ then
     use_R 
     use_Python 
     use_Perl
+    export PATH=/isitools/sratoolkit.2.4.2-centos_linux64/bin/:$PATH
 fi

@@ -5,7 +5,6 @@ let g:ycm_server_python_interpreter="/usr/bin/python"
 
 set nocompatible	" Req'd for Vundle
 filetype off		" Req'd for Vundle, can turn on later
-syntax on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " 	alternatively, pass a path where Vundle should install plugins
@@ -29,6 +28,7 @@ if !on_mac
     execute pathogen#infect()
 endif
 filetype plugin indent on
+syntax on
 set t_Co=256   " This is may or may not needed.
 set backspace=indent,eol,start
 
