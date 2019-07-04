@@ -9,6 +9,6 @@ export VIRTUALENVWRAPPER_PYTHON=/isitools/Python2.7.12/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python2.7.12/bin/virtualenv
 source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
 
-alias python="/isitools/Python2.7.12/bin/python"
-alias pip='/isitools/Python2.7.12/bin/pip'
+#alias python="/isitools/Python2.7.12/bin/python"
+#alias pip='/isitools/Python2.7.12/bin/pip'
 

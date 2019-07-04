@@ -1,0 +1,2 @@
+export JAVA_HOME=/isitools/openjdk-12
+export PATH=/isitools/openjdk-12:/isitools/openjdk-12/bin:/isitools/openjdk-12/lib:$PATH
