@@ -15,6 +15,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin '2072/PHP-Indenting-for-VIm'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
+    Plugin 'tpope/vim-fugitive'
     "Plugin 'StanAngeloff/php.vim'
     colorscheme PaperColor
 else
@@ -26,6 +27,9 @@ endif
 call vundle#end()
 if !on_mac
     execute pathogen#infect()
+endif
+if &diff
+    set noreadonly
 endif
 filetype plugin indent on
 syntax on
