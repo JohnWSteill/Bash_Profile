@@ -1,26 +1,3 @@
-#!/bin/bash
-
-export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
-
-PS1='\A  \h  \W > '
-PS1='\[\e[1;91m\]\A  \h  \W\[\e[0m\] > '
-
-
-
-if [ $onMac == 'true' ] 
-then
-
-    alias vi=mvim
-    export PATH="/Users/jsteill/anaconda/bin:$PATH"
-    # Setting PATH for Python 3.5
-    # The orginal version is saved in .bash_profile.pysave
-    PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-    PATH="/usr/local/bin:$PATH"  
-    export PATH
-    alias mysql="/Applications/MAMP/Library/bin/mysql"
-    return
-fi
-
 # -----------------------   For MIR Machines: -------------------------------
 
 function see_ls_colors {
@@ -67,25 +44,12 @@ export -f gunzip
 
 alias envp="source ~/.pyVirt/env/bin/activate"
 alias envp_off="source ~/.pyVirt/env/bin/deactivate"
-alias p366="use_Python 3.6.6; export PYTHONPATH=$HOME/GUP/gup/:$PYTHONPATH; cd ~/PROJ ; source $WORKON_HOME/P366/bin/activate"
-alias p366="use_Python 3.6.6; cd ~/GUP ; source $WORKON_HOME/P366/bin/activate"
 alias pta="python -m unittest discover"
 alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias aa8g="autopep8 --in-place --aggressive --aggressive $HOME/GUP/gup/*.py $HOME/GUP/gup/gup/*.py $HOME/GUP/gup/gup/tests/*.py"
-alias ssh="ssh -o ServerAliveInterval=60"
-# Save and reload the history after each command finishes
-shopt -s histappend
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-export HISTSIZE=10000                   # big big history
-export HISTFILESIZE=10000               # big big history
-export HISTCONTROL="ignoreboth:erasedups" # no duplicate entries, cmds wth space
-alias nohup="nice -19 nohup"
-alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
-alias vi="/isitools/vim8/bin/vim"
 alias sql_push="mysqldump -u scotttiger -p thomson > "
 alias sql_pull="mysql -u scotttiger -p thomson < "
 
 use_Bowtie 
-
+alias vi='deactivate; export LD_LIBRARY_PATH=$HOME/bin/Python3.7.4/python/lib:$LD_LIBRARY_PATH; source ~/bin/Python_Virtual_Envs/P374/bin/activate; /w4home/jsteill/bin/vim_p374/bin/vim'
+alias nohup="nice -19 nohup"

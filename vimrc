@@ -16,8 +16,11 @@ Plugin '2072/PHP-Indenting-for-VIm'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'ambv/black', {'rtp': 'vim'}
+    let g:black_linelength=79
     "Plugin 'StanAngeloff/php.vim'
     colorscheme PaperColor
+    
 else
     set guifont=Menlo\ Regular:h12
     colorscheme molokai
@@ -32,6 +35,7 @@ if &diff
     set noreadonly
 endif
 filetype plugin indent on
+autocmd BufWritePost *.py call Flake8()
 syntax on
 set t_Co=256   " This is may or may not needed.
 set backspace=indent,eol,start
