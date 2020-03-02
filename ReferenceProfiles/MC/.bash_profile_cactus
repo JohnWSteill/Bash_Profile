@@ -10,4 +10,7 @@ export kyotoTycoonLib="-L${ttPrefix}/lib -Wl,-rpath,${ttPrefix}/lib -lkyototycoo
 export LD_LIBRARY_PATH=/opt/kyoto/lib:$LD_LIBRARY_PATH
 export PATH=$HOME/cactus/bin:$HOME/cactus_env/lib/python2.7:$PATH
 #export PYTHONPATH=$HOME/hal:$HOME/cactus_env/bin:$HOME/cactus_env/lib/python2.7:$PYTHONPATH
-export PYTHONPATH=$HOME/cactus_env/bin:$HOME/cactus_env/lib/python2.7:$PYTHONPATH
+#export PYTHONPATH=$HOME/cactus_env/bin:$HOME/cactus_env/lib/python2.7:$PYTHONPATH
+export PYTHONPATH=$HOME/cactus_env/bin:$HOME/cactus_env/lib/python3.5:$PYTHONPATH
+source cactus_env/bin/activate
+

@@ -1,0 +1,24 @@
+# INITIAL SETUP
+#export HOME=/w5home/mikec
+#pip install virtualenv
+#virtualenv cactus_env
+#source $HOME/cactus_env/bin/activate
+
+#source $HOME/cactus_env/bin/activate
+
+# set when installing: CPPFLAGS='-DPYPY_VERSION' pip install toil[all]
+export PATH=/isitools/hdf5/bin:${PATH}
+
+
+# kyotoTycoon VARs when building
+ttPrefix=/opt/kyoto
+export kyotoTycoonIncl="-I${ttPrefix}/include -DHAVE_KYOTO_TYCOON=1"
+export kyotoTycoonLib="-L${ttPrefix}/lib -Wl,-rpath,${ttPrefix}/lib -lkyototycoon -lkyotocabinet -lz -lbz2 -lpthread -lm -lstdc++"
+
+export LD_LIBRARY_PATH=/isitools/hdf5/lib:/isitools/kyoto/lib:$LD_LIBRARY_PATH
+export PATH=$HOME/cactus/bin:$HOME/cactus_env/lib/python3.7:$PATH
+#export PYTHONPATH=$HOME/hal:$HOME/cactus_env/bin:$HOME/cactus_env/lib/python2.7:$PYTHONPATH
+#export PYTHONPATH=$HOME/cactus_env/bin:$HOME/cactus_env/lib/python2.7:$PYTHONPATH
+export PYTHONPATH=$HOME/cactus_env/bin:$HOME/cactus_env/lib/python3.7:$PYTHONPATH
+source $HOME/cactus_env/bin/activate
+
