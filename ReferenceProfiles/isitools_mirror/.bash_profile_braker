@@ -8,7 +8,8 @@ export PATH=/isitools/augustus3.3/bin:/isitools/gm_et_linux_64:/isitools/gth-1.7
 #Important: GeneMark-EX will only run if a valid key file resides in your home directory. The key file will expire after 200 days, which means that you have to download a new GeneMark-EX release and a new key file after 200 days. The key file is downloaded as gm_key.gz. Unpack the key file and move it to a hidden file in your home directory as follows:
 cp -a /isitools/gm_et_linux_64/gm_key_64 ~/.gm_key
 
-export GENEMARK_PATH=/isitools/gm_et_linux_64/gmes_petap/
+#export GENEMARK_PATH=/isitools/gm_et_linux_64/gmes_petap/
+export GENEMARK_PATH=/isitools/gmes_linux_64
 export AUGUSTUS_CONFIG_PATH=/isitools/augustus3.3/config/  # note you'll need a local copy of config - see docs https://github.com/Gaius-Augustus/BRAKER#optional-tools
-export PYTHON3_PATH=/isitools/Python3.7.2
+export PYTHON3_PATH=/isitools/Python3.7.2/bin
 
