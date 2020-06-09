@@ -5,12 +5,13 @@ let g:ycm_server_python_interpreter="/usr/bin/python"
 
 set nocompatible	" Req'd for Vundle
 filetype off		" Req'd for Vundle, can turn on later
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.Vim
 call vundle#begin()
 " 	alternatively, pass a path where Vundle should install plugins
 "	call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.Vim'
-"Plugin 'ajh17/VimCompletesMe'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'gmarik/Vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin '2072/PHP-Indenting-for-VIm'
 if !on_mac
@@ -19,6 +20,7 @@ if !on_mac
     Plugin 'ambv/black', {'rtp': 'vim'}
     let g:black_linelength=79
     "Plugin 'StanAngeloff/php.vim'
+    "Plugin 'ajh17/VimCompletesMe'
     colorscheme PaperColor
     
 else
@@ -35,6 +37,7 @@ if &diff
     set noreadonly
 endif
 filetype plugin indent on
+filetype indent on
 autocmd BufWritePost *.py call Flake8()
 syntax on
 set t_Co=256   " This is may or may not needed.
