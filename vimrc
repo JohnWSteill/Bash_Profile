@@ -40,8 +40,9 @@ filetype plugin indent on
 filetype indent on
 autocmd BufWritePost *.py call Flake8()
 syntax on
-set t_Co=256   " This is may or may not needed.
+set t_Co=256
 set backspace=indent,eol,start
+:let mapleader = ","
 
 
 set tabstop=4 
@@ -54,3 +55,7 @@ set background=dark
 set number
 set relativenumber
 set ruler
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+:noremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+:noremap <leader>' viw<esc>a'<esc>bi'<esc>lel
