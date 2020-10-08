@@ -40,14 +40,19 @@ else
     source $BASH_PROFILE_HOME/R_Python_and_Perl_Envs_profile
     use_R 
     use_Perl
+    ruby -i -e 'puts readlines.reverse.uniq.reverse' ~/.bash_history
 fi
 
-alias ssh="ssh -o ServerAliveInterval=60"
-# Save and reload the history after each command finishes
+alias ssh="ssh -o ServerAliveInterval=180"
+# When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+
+# After each command, append to the history file 
+#export PROMPT_COMMAND='history -a'
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+#export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
-export HISTSIZE=10000                   # big big history
-export HISTFILESIZE=10000               # big big history
+export HISTSIZE=50000
+export HISTFILESIZE=50000
 export HISTCONTROL="ignoreboth:erasedups" # no duplicate entries, cmds wth space

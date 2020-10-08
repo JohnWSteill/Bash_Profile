@@ -1,0 +1,15 @@
+# .bash_profile
+source /isitools/.bash_profile_gcc7.5.0
+
+#export CC=/isitools/gcc4.9.4/bin/gcc 
+#export CXX=/isitools/gcc4.9.4/bin/g++ 
+
+# Default R-4.0.2 stuff:
+export R_HOME=/isitools/R-4.0.2
+export PATH=/isitools/curl/bin:/isitools/curl:/isitools/R-4.0.2/lib64/R:/isitools/R-4.0.2/bin:$PATH
+export R_LIBS=/isitools/R-4.0.2/lib64/R #DEFAULT SYSTEM R LIBRARY
+#export R_LIBS_USER=/w5home/$USER/<createYourDirectory>
+export R_LIBS_USER=/isitools/R-4.0.2/lib64/R
+export R_PROFILE=/isitools/R-4.0.2
+export LD_LIBRARY_PATH=$R_HOME/lib:$R_HOME/bin:$LD_LIBRARY_PATH
+
