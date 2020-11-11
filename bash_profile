@@ -5,11 +5,12 @@ export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
 PS1='\A  \h  \W > '
 PS1='\[\e[1;91m\]\A  \h  \W\[\e[0m\] > '
 
-PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib:usr/local/bin
+PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib:/usr/local/bin
 [[ "$(uname -s)" == "Linux" ]] && onMac=false || onMac=true
 
 BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
 source $BASH_PROFILE_HOME/git_profile
+source $BASH_PROFILE_HOME/alias_and_env_profile 
 
 if [ $onMac == 'true' ] 
 then

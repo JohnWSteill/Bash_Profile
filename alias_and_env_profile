@@ -53,3 +53,7 @@ alias sql_pull="mysql -u scotttiger -p thomson < "
 use_Bowtie 
 alias vi='deactivate; export LD_LIBRARY_PATH=$HOME/bin/Python3.7.4/python/lib:$LD_LIBRARY_PATH; source ~/bin/Python_Virtual_Envs/P374/bin/activate; /w4home/jsteill/bin/vim_p374/bin/vim'
 alias nohup="nice -19 nohup"
+task() {
+    python -c "import math; import random; print(int(math.ceil(-math.log(1-random.uniform(0,1))*$1)))";
+}
+alias standUp='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
