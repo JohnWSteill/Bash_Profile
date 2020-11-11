@@ -38,6 +38,13 @@ function use_Python(){
 }
 export -f use_Python
 
+function rmd() {
+    export PATH=$PATH:/isitools/anaconda3/bin #Pandoc path
+    echo "R -e \"rmarkdown::render('$1')\""
+    R -e "rmarkdown::render('$1')"
+    export PATH=$(remove_regex_els_from_path '/anaconda3/' $PATH)
+}
+
 function use_R() {
     if [ $# -eq 1 ]
     then

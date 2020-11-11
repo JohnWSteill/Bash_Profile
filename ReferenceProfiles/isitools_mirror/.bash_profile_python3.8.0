@@ -1,0 +1,12 @@
+# .bash_profile
+
+# User specific environment and startup programs
+
+export PATH=/isitools/Python3.8.0/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export PYTHONPATH=/isitools/Python3.8.0/bin #$PYTHONPATH
+export LD_LIBRARY_PATH=/isitools/Python3.8.0/lib:$LD_LIBRARY_PATH
+
+alias pip='/isitools/Python3.8.0/bin/pip3'
+alias python='/isitools/Python3.8.0/bin/python3.8'
+

@@ -13,15 +13,8 @@ else
         \export PATH="/isitools/anaconda2/bin:$PATH"
     fi
 fi
-
 unset __conda_setup
 # <<< conda init <<<
-# used for transporting functions' arguments across shells and to sub-shells:
-export -f conda
-export -f __conda_activate
-export -f __conda_reactivate
-export -f __conda_hashr
-
 
 export PYTHONPATH=/isitools/anaconda2/bin/python
 alias python='/isitools/anaconda2/bin/python'

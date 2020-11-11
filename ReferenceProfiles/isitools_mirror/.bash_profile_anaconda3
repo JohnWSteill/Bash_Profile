@@ -16,6 +16,12 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
+#Added 4 lines on 20200619:
+export -f conda
+export -f __conda_activate
+export -f __conda_reactivate
+export -f __conda_hashr
+
 export PYTHONPATH=/isitools/anaconda3/bin/python
 alias python='/isitools/anaconda3/bin/python'
 export PATH=/isitools/anaconda3/bin:/isitools/anaconda3:$PATH

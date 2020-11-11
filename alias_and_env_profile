@@ -57,3 +57,4 @@ task() {
     python -c "import math; import random; print(int(math.ceil(-math.log(1-random.uniform(0,1))*$1)))";
 }
 alias standUp='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
