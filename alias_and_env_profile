@@ -28,7 +28,6 @@ then
     PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
     PATH="/usr/local/bin:$PATH"  
     export PATH
-    alias mysql="/Applications/MAMP/Library/bin/mysql"
     return
 fi
 
@@ -84,3 +83,4 @@ alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias aa8g="autopep8 --in-place --aggressive --aggressive $HOME/GUP/gup/*.py $HOME/GUP/gup/gup/*.py $HOME/GUP/gup/gup/tests/*.py"
 use_Bowtie 
 
+export SGH=http://git.morgridge.us/repos-git
