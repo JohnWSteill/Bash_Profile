@@ -1,10 +1,5 @@
 # .bash_profile
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-        . ~/.bashrc
-fi
-
 # User specific environment and startup programs
 
 export PATH=/isitools/Python2.7.12/bin:/isitools/Python2.7.12/lib/python2.7/site-packages:$PATH
@@ -13,4 +8,7 @@ export PYTHONPATH=/isitools/Python2.7.12/bin:$PYTHONPATH
 export VIRTUALENVWRAPPER_PYTHON=/isitools/Python2.7.12/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=/isitools/Python2.7.12/bin/virtualenv
 source /isitools/virtualenvwrapper-3.6/virtualenvwrapper.sh
+
+#alias python="/isitools/Python2.7.12/bin/python"
+#alias pip='/isitools/Python2.7.12/bin/pip'
 

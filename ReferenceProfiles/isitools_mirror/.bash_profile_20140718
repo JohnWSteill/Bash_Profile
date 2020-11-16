@@ -3,10 +3,6 @@
 REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//`
 echo "This is a CentOS $REV machine"
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then . ~/.bashrc
-fi
-
 # Even for non-interactive, non-login shells.
 if [ $UID -gt 99 ] && [ "`id -gn`" = "`id -un`" ]; then
         umask 002

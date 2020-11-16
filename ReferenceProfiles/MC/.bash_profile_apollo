@@ -8,7 +8,8 @@ fi
 # User specific environment and startup programs
 source /isitools/.bash_profile
 #source /w5home/mikec/.bash_profile/.bash_profile_perl5.26.1_homeMikec
-source /w5home/mikec/.bash_profile/.bash_profile_perl5.24.4_mcHomeLocal
+#source /w5home/mikec/.bash_profile/.bash_profile_perl5.24.4_mcHomeLocal
+source /isitools/.bash_profile_perl5.24.4
 
 # JAVA
 ulimit -c unlimited

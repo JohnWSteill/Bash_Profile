@@ -1,0 +1,5 @@
+export PATH=/mnt/isi5sge/gridengine/bin:/mnt/isi5sge/gridengine/bin/lx-amd64:$PATH
+export SGE_ROOT=/mnt/isi5sge/gridengine
+export SGE_CELL=default
+
+source /mnt/isi5sge/gridengine/default/common/settings.sh

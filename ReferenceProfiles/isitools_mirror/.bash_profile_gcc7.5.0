@@ -1,0 +1,21 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+export PATH=/isitools/gcc7.5.0:/isitools/gcc7.5.0/bin:/isitools/gcc7.5.0/lib:/isitools/gcc7.5.0/lib64:$PATH
+export ISIHOME=/isitools
+export LD_LIBRARY_PATH=/isitools/gcc7.5.0/lib:/isitools/gcc7.5.0/lib64:$LD_LIBRARY_PATH
+
+# GCC stuff
+alias cc="/isitools/gcc7.5.0/bin/gcc"
+alias g++="/isitools/gcc7.5.0/bin/g++"
+#export C_INCLUDE_PATH=/isitools/gcc7.5.0
+#export CPLUS_INCLUDE_PATH=/isitools/gcc7.5.0
+#export CPATH=/isitools/gcc7.5.0/include
+#export COMPILER_PATH=/isitools/gcc7.5.0/
+#export LIBRARY_PATH=/isitools/gcc7.5.0/lib64
+export CC=/isitools/gcc7.5.0/bin/gcc
+export CXX=/isitools/gcc7.5.0/bin/g++

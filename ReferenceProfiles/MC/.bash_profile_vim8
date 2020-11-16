@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# locally-installed vim
+if [ -d "$HOME/.local/vim/bin" ] ; then
+  PATH="$HOME/.local/vim/bin/:$PATH"
+fi
+
+PATH="$HOME/.local/vim:/isitools/vim8:/isitools/vim8/bin/:/isitools/vim8/share:$PATH"
+
+export MYVIMRC="$HOME/.local/vim/.vimrc"
+# fnamemodify(expand("$MYVIMRC"), ":p:h")

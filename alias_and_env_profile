@@ -1,37 +1,16 @@
 #!/bin/bash
+# 3 sections:
+#   1) Aliases common to all environments
+#   2) Mac-Only - with a return to hide the rest
+#   3) Mir-Only 
 
 export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
-
-PS1='\A  \h  \W > '
-
-alias ssh="ssh -o ServerAliveInterval=60"
-# Save and reload the history after each command finishes
-export HISTCONTROL="ignoreboth:erasedups" # no duplicate entries, cmds wth space
-shopt -s histappend
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-export HISTSIZE=10000                   # big big history
-export HISTFILESIZE=10000               # big big history
+alias ssh="ssh -o ServerAliveInterval=180"
 alias nohup="nice -19 nohup"
-alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
-alias vi="/isitools/vim8/bin/vim"
 
-
-if [ $onMac == 'true' ] 
-then
-
-    alias vi=mvim
-    export PATH="/Users/jsteill/anaconda/bin:$PATH"
-    # Setting PATH for Python 3.5
-    # The orginal version is saved in .bash_profile.pysave
-    PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-    PATH="/usr/local/bin:$PATH"  
-    export PATH
-    return
-fi
-
-# -----------------------   For MIR Machines: -------------------------------
+task() {
+    python -c "import math; import random; print(int(math.ceil(-math.log(1-random.uniform(0,1))*$1)))";
+}
 
 function see_ls_colors {
     IFS=:     
@@ -40,6 +19,19 @@ function see_ls_colors {
      echo -e "\e[${i#*=}m$( x=${i%=*}; [ "${!x}" ] && echo "${!x}" || echo "$x" )\e[m" 
     done       
 }
+
+if [ $onMac == 'true' ] 
+then
+
+    alias mysql="/Applications/MAMP/Library/bin/mysql"
+    alias vi=mvim
+    # Setting PATH for Python 3.5
+    # The orginal version is saved in .bash_profile.pysave
+    return
+fi
+
+# -----------------------   For MIR Machines: -------------------------------
+
 
 function tar_gd {
     tar -czf "$1.tgz" "$1"
@@ -77,10 +69,15 @@ export -f gunzip
 
 alias envp="source ~/.pyVirt/env/bin/activate"
 alias envp_off="source ~/.pyVirt/env/bin/deactivate"
-alias p366="use_Python 3.6.6; cd ~/GUP ; source $WORKON_HOME/P366/bin/activate"
 alias pta="python -m unittest discover"
 alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias aa8g="autopep8 --in-place --aggressive --aggressive $HOME/GUP/gup/*.py $HOME/GUP/gup/gup/*.py $HOME/GUP/gup/gup/tests/*.py"
-use_Bowtie 
+alias sql_push="mysqldump -u scotttiger -p thomson > "
+alias sql_pull="mysql -u scotttiger -p thomson < "
+alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
 
 export SGH=http://git.morgridge.us/repos-git
+use_Bowtie 
+alias vi='deactivate; export LD_LIBRARY_PATH=$HOME/bin/Python3.7.4/python/lib:$LD_LIBRARY_PATH; source ~/bin/Python_Virtual_Envs/P374/bin/activate; /w4home/jsteill/bin/vim_p374/bin/vim'
+alias standUp='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"

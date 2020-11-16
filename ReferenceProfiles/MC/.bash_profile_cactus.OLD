@@ -1,0 +1,12 @@
+export HOME=/w5home/mikec
+source $HOME/cactus_env/bin/activate
+
+# kyotoTycoon VARs when building
+ttPrefix=/isitools/kyoto
+export kyotoTycoonIncl="-I${ttPrefix}/include -DHAVE_KYOTO_TYCOON=1"
+export kyotoTycoonLib="-L${ttPrefix}/lib -Wl,-rpath,${ttPrefix}/lib -lkyototycoon -lkyotocabinet -lz -lbz2 -lpthread -lm -lstdc++"
+
+#export PATH=$HOME/cactus/bin:$HOME/cactus_env/lib/python2.7:$HOME/cactus_env/bin:$PATH
+export LD_LIBRARY_PATH=/isitools/kyoto/lib:$LD_LIBRARY_PATH
+export PATH=$HOME/cactus/bin:$HOME/cactus_env/lib/python2.7:$PATH
+export PYTHONPATH=$HOME/hal:$HOME/cactus_env/bin:$HOME/cactus_env/lib/python2.7:$PYTHONPATH

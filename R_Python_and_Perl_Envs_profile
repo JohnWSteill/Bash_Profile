@@ -1,6 +1,6 @@
 #!/bin/bash
 export DEFAULT_PYTHON="3.6.6"
-export DEFAULT_R="3.5.1"
+export DEFAULT_R="3.6.2"
 export DEFAULT_PERL="5.16.3"
 
 
@@ -37,6 +37,13 @@ function use_Python(){
     echo "Using $Pver"
 }
 export -f use_Python
+
+function rmd() {
+    export PATH=$PATH:/isitools/anaconda3/bin #Pandoc path
+    echo "R -e \"rmarkdown::render('$1')\""
+    R -e "rmarkdown::render('$1')"
+    export PATH=$(remove_regex_els_from_path '/anaconda3/' $PATH)
+}
 
 function use_R() {
     if [ $# -eq 1 ]

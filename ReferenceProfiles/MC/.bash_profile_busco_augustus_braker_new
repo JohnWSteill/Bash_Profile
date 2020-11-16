@@ -1,0 +1,25 @@
+source /isitools/.bash_profile_python2.7.12
+#source /isitools/.bash_profile_python3.7.2
+source /mnt/isi5home/mikec/.bash_profile_DIR/.bash_profile_PATH_BOOST_1.62.0
+
+export BUSCO_CONFIG_FILE="/w5home/mikec/BUSCO/config.ini"
+export PATH=/isitools/augustus-3.3.2/bin:/isitools/augustus-3.3.2/scripts:/isitools/augustus-3.3.2/MakeHub:/isitools/diamond:$PATH
+export AUGUSTUS_CONFIG_PATH="/w5home/mikec/AUGUSTUS/config"
+export BOOST_ROOT=/isitools/boost_1_62_0
+export BOOST_INCLUDEDIR=${BOOST_ROOT}/include
+export BOOST_LIBRARYDIR=${BOOST_ROOT}/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/isitools/bamtools/lib
+
+export PATH=/isitools/BRAKER/scripts:$PATH
+export GENEMARK_PATH=/isitools/gm_et_linux_64/gmes_petap
+
+#only for building bam2wig 
+export TOOLDIR=/isitools/src/Augustus/auxprogs/bam2wig/tooldir
+
+# test busco
+#python /isitools/busco-master/scripts/run_BUSCO.py --in /mnt/isi5home/mikec/BUSCO/sample_data/target.fa --out TEST --lineage_path example --mode genome |& tee BUSCO.out
+
+# to run make_hub.py:
+# python3 /isitools/augustus-3.3.2/MakeHub/make_hub.py 
+
+# braker docs: https://github.com/Gaius-Augustus/BRAKER#perl-pipeline-dependencies

@@ -1,0 +1,17 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+export PATH=/isitools/boost_1_62_0:/isitools/boost_1_62_0/lib:/isitools/boost_1_62_0/include:$PATH
+export LD_LIBRARY_PATH=/isitools/boost_1_62_0/include/boost:/isitools/boost_1_62_0/lib:$LD_LIBRARY_PATH
+
+export BOOST_ROOT=/isitools/boost_1_62_0
+export BOOST_INCLUDEDIR="$BOOST_ROOT/include"
+export BOOST_LIBRARYDIR="$BOOST_ROOT/lib"
+
+export CFLAGS="-I/isitools/boost_1_62_0/include"
+export LDFLAGS="-L/isitools/boost_1_62_0/lib"
