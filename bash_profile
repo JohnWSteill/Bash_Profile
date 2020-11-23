@@ -5,18 +5,20 @@ export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
 PS1='\A  \h  \W > '
 PS1='\[\e[1;91m\]\A  \h  \W\[\e[0m\] > '
 
-PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib:usr/local/bin
+PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib:/usr/local/bin
 [[ "$(uname -s)" == "Linux" ]] && onMac=false || onMac=true
 
 BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
 source $BASH_PROFILE_HOME/git_profile
+source $BASH_PROFILE_HOME/alias_and_env_profile 
 
 if [ $onMac == 'true' ] 
 then
-    alias vi=mvim
     export PATH="/Users/jsteill/anaconda/bin:$PATH"
-    export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-    alias mysql="/Applications/MAMP/Library/bin/mysql"
+    export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:$PATH"
+    export PATH="/Users/jsteill/anaconda/bin:$PATH"
+    export PATH="/usr/local/bin:$PATH"  
+    export PATH=$PATH:"/Users/jsteill/edirect"
 else 
     umask 0002
     REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//` 
@@ -33,26 +35,40 @@ else
     export PATH=/isitools/R-3.5.1/lib64/R:/isitools/R-3.5.1/bin:$PATH
     export PATH=/isitools/bowtie-1.2.2:$HOME/bin:$PATH
     export PATH=/isitools/anaconda3/bin:$HOME/bin:$PATH # For Pandoc in Rmd
+    export PATH=${PATH}:/usr/X11/bin
 
     export PYTHONPATH=$HOME/bin/Python3.7.4/python/bin/
     # Uses sytem defaults, defined in R_Python_and_Perl_Envs_profile 
-    source $BASH_PROFILE_HOME/alias_and_env_profile
     source $BASH_PROFILE_HOME/R_Python_and_Perl_Envs_profile
     use_R 
     use_Perl
     ruby -i -e 'puts readlines.reverse.uniq.reverse' ~/.bash_history
 fi
 
-alias ssh="ssh -o ServerAliveInterval=180"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+PS1='\A  \h  \W > '
+
+# Save and reload the history after each command finishes
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
-# After each command, append to the history file 
-#export PROMPT_COMMAND='history -a'
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-#export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
 export HISTSIZE=50000
 export HISTFILESIZE=50000
 export HISTCONTROL="ignoreboth:erasedups" # no duplicate entries, cmds wth space
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
