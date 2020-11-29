@@ -10,11 +10,10 @@ call vundle#begin()
 " 	alternatively, pass a path where Vundle should install plugins
 "	call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.Vim'
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'gmarik/Vundle'
-Plugin 'Valloric/YouCompleteMe'
-Plugin '2072/PHP-Indenting-for-VIm'
 if !on_mac
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin '2072/PHP-Indenting-for-VIm'
     Plugin 'NLKNguyen/papercolor-theme'
     Plugin 'tpope/vim-fugitive'
     Plugin 'ambv/black', {'rtp': 'vim'}
@@ -22,6 +21,7 @@ if !on_mac
     "Plugin 'StanAngeloff/php.vim'
     "Plugin 'ajh17/VimCompletesMe'
     colorscheme PaperColor
+    autocmd BufWritePost *.py call Flake8()
     
 else
     set guifont=Menlo\ Regular:h12
@@ -38,7 +38,6 @@ if &diff
 endif
 filetype plugin indent on
 filetype indent on
-autocmd BufWritePost *.py call Flake8()
 syntax on
 set t_Co=256
 set backspace=indent,eol,start
