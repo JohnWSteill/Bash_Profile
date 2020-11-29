@@ -9,9 +9,10 @@
 # set when installing: CPPFLAGS='-DPYPY_VERSION' pip install toil[all]
 export PATH=/isitools/hdf5/bin:${PATH}
 
-
 # kyotoTycoon VARs when building
-ttPrefix=/opt/kyoto
+#ttPrefix=/opt/kyoto
+export PATH=/isitools/kyoto:/isitools/kyoto/bin:/isitools/kyoto/lib:${PATH}
+ttPrefix=/isitools/kyoto
 export kyotoTycoonIncl="-I${ttPrefix}/include -DHAVE_KYOTO_TYCOON=1"
 export kyotoTycoonLib="-L${ttPrefix}/lib -Wl,-rpath,${ttPrefix}/lib -lkyototycoon -lkyotocabinet -lz -lbz2 -lpthread -lm -lstdc++"
 

@@ -1,4 +1,16 @@
-# -----------------------   For MIR Machines: -------------------------------
+#!/bin/bash
+# 3 sections:
+#   1) Aliases common to all environments
+#   2) Mac-Only - with a return to hide the rest
+#   3) Mir-Only 
+
+export WORKON_HOME=$HOME/bin/Python_Virtual_Envs
+alias ssh="ssh -o ServerAliveInterval=180"
+alias nohup="nice -19 nohup"
+
+task() {
+    python -c "import math; import random; print(int(math.ceil(-math.log(1-random.uniform(0,1))*$1)))";
+}
 
 function see_ls_colors {
     IFS=:     
@@ -7,6 +19,19 @@ function see_ls_colors {
      echo -e "\e[${i#*=}m$( x=${i%=*}; [ "${!x}" ] && echo "${!x}" || echo "$x" )\e[m" 
     done       
 }
+
+if [ $onMac == 'true' ] 
+then
+
+    alias mysql="/Applications/MAMP/Library/bin/mysql"
+    alias vi=mvim
+    # Setting PATH for Python 3.5
+    # The orginal version is saved in .bash_profile.pysave
+    return
+fi
+
+# -----------------------   For MIR Machines: -------------------------------
+
 
 function tar_gd {
     tar -czf "$1.tgz" "$1"
@@ -49,12 +74,11 @@ alias aa8="autopep8 --in-place --aggressive --aggressive "
 alias aa8g="autopep8 --in-place --aggressive --aggressive $HOME/GUP/gup/*.py $HOME/GUP/gup/gup/*.py $HOME/GUP/gup/gup/tests/*.py"
 alias sql_push="mysqldump -u scotttiger -p thomson > "
 alias sql_pull="mysql -u scotttiger -p thomson < "
+alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS --exclude usageScripts --exclude .gitignore ~/GUP/gup/ /isitools/GUP"
 
+export SGH=http://git.morgridge.us/repos-git
 use_Bowtie 
 alias vi='deactivate; export LD_LIBRARY_PATH=$HOME/bin/Python3.7.4/python/lib:$LD_LIBRARY_PATH; source ~/bin/Python_Virtual_Envs/P374/bin/activate; /w4home/jsteill/bin/vim_p374/bin/vim'
-alias nohup="nice -19 nohup"
-task() {
-    python -c "import math; import random; print(int(math.ceil(-math.log(1-random.uniform(0,1))*$1)))";
-}
 alias standUp='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
+alias v3="vi -O3"
