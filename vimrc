@@ -16,8 +16,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin '2072/PHP-Indenting-for-VIm'
 if !on_mac
     Plugin 'NLKNguyen/papercolor-theme'
+    Plugin 'fisadev/vim-isort'
     Plugin 'tpope/vim-fugitive'
     Plugin 'ambv/black', {'rtp': 'vim'}
+    Plugin 'https://github.com/snakemake/snakemake.git', {'rtp': 'misc/vim/'}
     let g:black_linelength=79
     "Plugin 'StanAngeloff/php.vim'
     "Plugin 'ajh17/VimCompletesMe'
@@ -42,7 +44,6 @@ autocmd BufWritePost *.py call Flake8()
 syntax on
 set t_Co=256
 set backspace=indent,eol,start
-:let mapleader = ","
 
 
 set tabstop=4 
@@ -55,6 +56,8 @@ set background=dark
 set number
 set relativenumber
 set ruler
+:let mapleader = ","
+:nnoremap <leader>S :set syntax=snakemake<cr>
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 :noremap <leader>" viw<esc>a"<esc>bi"<esc>lel
