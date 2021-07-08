@@ -1,0 +1,37 @@
+cd /w5home/$USER
+source /isitools/.bash_profile_python3.7.2
+#export PYTHONPATH=$(pwd)/submodules:$PYTHONPATH
+#export PATH=$HOME/cactus_env_v1.2.3/bin:$PATH
+#export PYTHONPATH=$HOME/cactus_env_v1.2.3/lib:$PYTHONPATH
+export PATH=/isitools/cactus-bin-v1.3.0/bin:$PATH
+export PYTHONPATH=/isitools/cactus-bin-v1.3.0/bin:/isitools/cactus-bin-v1.3.0/submodules:/isitools/cactus-bin-v1.3.0/lib:$PYTHONPATH
+
+# create virtual env
+virtualenv -p python3.7 cactus_env_v1.3.0
+# activate virtual env
+source ./cactus_env_v1.3.0/bin/activate
+
+# install/satisfy dependencies:
+pip install -U setuptools pip
+pip install -U -r /isitools/cactus-bin-v1.3.0/toil-requirement.txt
+pip install -U /isitools/cactus-bin-v1.3.0/.
+
+
+# CACTUS INSTALL IN PYTHON:
+#echo $PATH 
+#/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+#source /isitools/.bash_profile_python3.7.2 
+#cd /isitools/
+#wget https://github.com/ComparativeGenomicsToolkit/cactus/releases/download/v1.3.0/cactus-bin-v1.3.0.tar.gz
+#tar zxf cactus-bin-v1.3.0.tar.gz ; mv cactus-bin-v1.3.0.tar.gz ./src/
+#cd cactus-bin-v1.3.0/
+#cat README.md |more
+#python3 -m pip install virtualenv
+#python -m virtualenv -p python3.7 cactus_env_1.3.0
+#source cactus_env_1.3.0/bin/activate
+#git clone https://github.com/ComparativeGenomicsToolkit/cactus.git --recursive
+#cd cactus
+#pip install --upgrade setuptools pip
+#pip install --upgrade -r toil-requirement.txt
+#pip install --upgrade .
+

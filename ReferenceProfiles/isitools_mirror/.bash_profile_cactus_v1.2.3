@@ -1,0 +1,27 @@
+cd /w5home/$USER
+source /isitools/.bash_profile_python3.7.2
+source /isitools/.bash_profile_gcc7.5.0 
+#export PATH=~/cactus_env_v1.2.3/bin:/isitools/cactus-bin-v1.2.3/bin:$PATH
+#export PYTHONPATH=$(pwd)/submodules:$PYTHONPATH
+
+# hal and hdf5, sonLib
+export PATH=/isitools/hal:/isitools/hal/bin:/isitools/hal/lib:/isitools/hdf5-1.10.7/bin:/isitools/hal/sonLib:/isitools/hal/sonLib/bin:/isitools/hal/sonLib/lib:/isitools/hal/phast/bin:/isitools/hal/phast/lib:/isitools/hal/phast:${PATH}
+export h5prefix=-prefix=/isitools/hdf5-1.10.7 # needed for building hal
+export CXX_ABI_DEF=-D_GLIBCXX_USE_CXX11_ABI=1 # old versions of hdf5 on centos
+export sonLibRootDir=/isitools/hal/sonLib
+export CLAPACKPATH=/isitools/hal/clapack # needed for building hal
+export ENABLE_PHYLOP=1  # before building hal
+
+export PATH=$HOME/cactus_env_v1.2.3/bin:$PATH
+export PYTHONPATH=/isitools/hal:$HOME/cactus_env_v1.2.3/lib:$PYTHONPATH
+
+# create virtual env
+virtualenv -p python3.7 cactus_env_v1.2.3
+# activate virtual env
+source ./cactus_env_v1.2.3/bin/activate
+
+# install/satisfy dependencies:
+pip install -U setuptools pip
+pip install -U -r /isitools/cactus-bin-v1.2.3/toil-requirement.txt
+pip install -U /isitools/cactus-bin-v1.2.3/.
+

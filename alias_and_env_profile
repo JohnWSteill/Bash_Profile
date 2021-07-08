@@ -78,7 +78,8 @@ alias rsyncGup="rsync -au --delete --exclude .git --exclude *.pyc --exclude SRS 
 
 export SGH=http://git.morgridge.us/repos-git
 use_Bowtie 
-alias vi='deactivate; export LD_LIBRARY_PATH=$HOME/bin/Python3.7.4/python/lib:$LD_LIBRARY_PATH; source ~/bin/Python_Virtual_Envs/P374/bin/activate; /w4home/jsteill/bin/vim_p374/bin/vim'
+alias vi='deactivate; export LD_LIBRARY_PATH=$HOME/bin/Python3.7.4/python/lib:$LD_LIBRARY_PATH; source ~/bin/Python_Virtual_Envs/P374/bin/activate; /mnt/isi5home/jsteill/bin/vim_p374/bin/vim'
 alias standUp='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
 alias v3="vi -O3"
+export JUPYTER_ALLOW_INSECURE_WRITES=true
