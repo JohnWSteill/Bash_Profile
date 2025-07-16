@@ -24,9 +24,6 @@ if [ $onMac == 'true' ]
 then
 
     alias mysql="/Applications/MAMP/Library/bin/mysql"
-    alias vi=mvim
-    # Setting PATH for Python 3.5
-    # The orginal version is saved in .bash_profile.pysave
     return
 fi
 

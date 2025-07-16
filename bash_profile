@@ -19,6 +19,9 @@ then
     export PATH="/Users/jsteill/anaconda/bin:$PATH"
     export PATH="/usr/local/bin:$PATH"  
     export PATH=$PATH:"/Users/jsteill/edirect"
+    export PATH="$PATH:/usr/sbin:/usr/local/sbin:/sbin"
+    source /etc/vpnc/bash_profile_openconnect.sh
+    echo "move /etc/vpnc/bash_profile_openconnect.sh to ~/bin/Bash_Profile"
 else 
     umask 0002
     REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//` 
@@ -44,21 +47,6 @@ else
     use_Perl
     ruby -i -e 'puts readlines.reverse.uniq.reverse' ~/.bash_history
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 PS1='\A  \h  \W > '
 
