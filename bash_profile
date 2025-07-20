@@ -40,3 +40,4 @@ export LESS='-R'
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
+export PATH="/usr/local/opt/python@3.13/bin:$PATH"
