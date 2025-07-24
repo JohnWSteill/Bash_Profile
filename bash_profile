@@ -8,11 +8,8 @@ alias gs='git status'
 alias gl='git log --oneline --graph --decorate'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ls='ls -G'
 
-# Confirm before overwriting
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
 
 # ---------------------
 # Pyenv (if installed)
@@ -28,7 +25,7 @@ fi
 # Git branch in prompt (optional)
 # ---------------------
 
-export PS1='\[\e[1;91m\]\A  \h  \W\[\e[0m\] > '
+export PS1='\[\e[1;91m\]\A  \W\[\e[0m\] > '
 # ---------------------
 # Less annoying less
 # ---------------------
@@ -41,3 +38,13 @@ if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 export PATH="/usr/local/opt/python@3.13/bin:$PATH"
+
+# Save and reload the history after each command finishes
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export HISTCONTROL="ignoreboth:erasedups" # no duplicate entries, cmds wth space
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
