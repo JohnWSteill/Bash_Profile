@@ -6,36 +6,12 @@ Each suggestion is minimal, safe for macOS and Linux, and avoids brittle legacy 
 
 
 
-## 4. Useful Aliases
-
-```bash
-alias ll='ls -alF'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias gs='git status'
-alias gl='git log --oneline --graph --decorate'
-```
-
-> Common navigation and Git shortcuts; `vi` alias protects against unwanted overrides.
-
----
-
-## 5. Quality-of-Life Git Log Aliases
-
-```bash
-alias glp="git log --pretty=format:\"%cr: %s\""
-alias glg="git log --oneline --decorate --graph --all"
-alias glgc="git log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s\""
-```
-
-> Beautiful and compact Git history views.
 
 ---
 
 ## 6. `clearNb` — Jupyter Notebook Cleaner
 
 ```bash
-alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
 ```
 
 > Clears all Jupyter output cells — great before commits.

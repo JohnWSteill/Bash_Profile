@@ -6,7 +6,6 @@ PATH=$HOME/bin:/usr/bin:/bin:/usr/lib64:/usr/lib:/usr/local/bin
 [[ "$(uname -s)" == "Linux" ]] && onMac=false || onMac=true
 
 BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
-source $BASH_PROFILE_HOME/git_profile
 source $BASH_PROFILE_HOME/alias_and_env_profile 
 
 if [ $onMac == 'true' ] 

@@ -1,35 +1,18 @@
+BASH_PROFILE_HOME=$HOME/bin/Bash_Profile
+source $BASH_PROFILE_HOME/git_profile
+
 # ~/.bashrc
 
 # ---------------------
 # Aliases and Shortcuts
 # ---------------------
 
-alias gs='git status'
-alias gl='git log --oneline --graph --decorate'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ls='ls -G'
-
-
-# ---------------------
-# Pyenv (if installed)
-# ---------------------
-if command -v pyenv &>/dev/null; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# ---------------------
-# Git branch in prompt (optional)
-# ---------------------
+alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
 
 export PS1='\[\e[1;91m\]\A  \W\[\e[0m\] > '
-# ---------------------
-# Less annoying less
-# ---------------------
-export LESS='-R'
 
 # ---------------------
 # Enable programmable completion
