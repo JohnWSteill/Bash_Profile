@@ -13,6 +13,7 @@ alias ls='ls -G'
 alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
 
 export PS1='\[\e[1;91m\]\A  \W\[\e[0m\] > '
+# export PS1='\[\e[1;91m\]${VIRTUAL_ENV:+" "}\A  \W\[\e[0m\] > '
 
 # ---------------------
 # Enable programmable completion
@@ -20,7 +21,7 @@ export PS1='\[\e[1;91m\]\A  \W\[\e[0m\] > '
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
-export PATH="/usr/local/opt/python@3.13/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
 # Save and reload the history after each command finishes
 # When the shell exits, append to the history file instead of overwriting it
