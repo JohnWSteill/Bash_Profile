@@ -6,9 +6,29 @@ Constraints:
 - Single machine profile now (no more multi-host switching logic unless it’s truly needed).
 - Prefer boring, standard, well-known patterns.
 - Avoid changes that break non-interactive shells, scripts, CI, or SSH remote commands.
+- Avoid breaking VS Code integrated terminal shell integration.
 - Make changes incrementally, with easy rollback.
 
 ## 0) Immediate guardrails (same spirit as `Recovery_Stuff/RECOVERY_TODO.md`)
+
+### 0.0 After an accidental `rm -rf`: quick recovery triage
+
+Goal: maximize the chance of recovery and reduce repeat accidents.
+
+- If the deleted thing was inside a Git repo, prefer Git recovery first (fast + reliable):
+
+```bash
+git status
+git log --name-status --all -- <path>
+git checkout <good_commit_or_branch> -- <path>
+```
+
+- Check macOS backups/snapshots (if you have them):
+  - Time Machine: restore the folder/file.
+  - iCloud/Dropbox/Drive: check their “Deleted files” UI.
+  - APFS snapshots (if enabled): list/restore via your backup tooling.
+
+If you’re unsure, pause big writes (mass installs/copies) until you’ve tried the most likely recovery route.
 
 ### 0.1 Safe `rm` — only for interactive shells
 
@@ -39,7 +59,7 @@ trash() {
 }
 
 alias rm='trash'
-alias rm!='\command rm'
+alias rm!='/bin/rm'
 ```
 
 Notes:
@@ -50,10 +70,24 @@ Verification:
 
 ```bash
 type rm
-rm! --version 2>/dev/null || true
+type rm!
 ```
 
-### 0.2 Git “private backup” remote
+### 0.2 Secrets hygiene (important)
+
+Goal: keep tokens out of versioned dotfiles.
+
+- Even in a private repo, prefer not to commit secrets (e.g. `GITLAB_TOKEN`) into tracked files.
+  - “Private + expiring soon” lowers risk, but it’s still easy to accidentally paste/log/share a repo later.
+- Source an untracked secrets file instead:
+
+```bash
+[ -f "$HOME/.bash_profile_secrets" ] && . "$HOME/.bash_profile_secrets"
+```
+
+- If a token ever made it into git history, rotate/revoke it.
+
+### 0.3 Git “private backup” remote
 
 Goal: always have an offsite mirror of branches/tags.
 
@@ -88,6 +122,10 @@ command -v brew || true
 brew --prefix 2>/dev/null || true
 brew --version 2>/dev/null || true
 
+# Prompt plumbing (VS Code shell integration often uses PROMPT_COMMAND)
+printf 'PROMPT_COMMAND=%q\n' "${PROMPT_COMMAND-}"
+printf 'PS1=%q\n' "${PS1-}"
+
 # What completion is loaded
 shopt -p progcomp || true
 complete -p | sed -n '1,200p'
@@ -111,22 +149,31 @@ Also inspect these files if present:
 ## 2) Simplify profile topology (recommended layout)
 
 Target behavior:
-- `~/.bash_profile`: minimal, only for login shells; sources `~/.bashrc`.
-- `~/.bashrc`: interactive shell configuration (aliases, prompt, completion, functions).
+- `~/.bash_profile`: minimal, just sources your repo-managed `bash_profile`.
+- (Optional) `~/.bashrc`: either unused, or used only as a thin compatibility shim.
 - Optional: `~/.bashrc.d/*.bash` fragments sourced from `.bashrc` (keeps things tidy).
 
-Suggested `.bash_profile` (minimal):
+Suggested `~/.bash_profile` (minimal, your stated goal):
 
 ```bash
 # ~/.bash_profile
 
-# Source interactive config if it exists
-if [ -f "$HOME/.bashrc" ]; then
-  . "$HOME/.bashrc"
+# Source repo-managed profile
+if [ -f "$HOME/bin/Bash_Profile/bash_profile" ]; then
+  . "$HOME/bin/Bash_Profile/bash_profile"
 fi
 ```
 
-Then keep the rest in `.bashrc` (or your repo-managed profile files) behind an interactive-shell guard:
+If you want `.bashrc` for compatibility (some tools expect it), keep it as a thin shim:
+
+```bash
+# ~/.bashrc
+if [ -f "$HOME/bin/Bash_Profile/bash_profile" ]; then
+  . "$HOME/bin/Bash_Profile/bash_profile"
+fi
+```
+
+Then keep interactive-only behavior behind an interactive-shell guard (in the sourced file):
 
 ```bash
 # ~/.bashrc
@@ -137,6 +184,10 @@ esac
 
 # source your repo-managed stuff
 # . "$HOME/bin/Bash_Profile/bash_profile"  # example
+
+# Note: this repo contains legacy fragments (e.g. `alias_and_env_profile`) that assume old multi-host logic
+# (like `$onMac`) and include Linux-only/tooling-specific paths. Don’t source them unless you intentionally
+# migrate selected pieces.
 ```
 
 ## 3) Homebrew modernization (Apple Silicon)
@@ -170,11 +221,62 @@ which python3
 python3 -c 'import sys; print(sys.executable)'
 ```
 
+## 3.5 Prompt + history without breaking VS Code shell integration
+
+Symptom you may see if this is wrong:
+- `bash: __vsc_prompt_cmd_original: command not found`
+
+Root cause: clobbering `PROMPT_COMMAND` (or ordering issues) can break VS Code’s injected prompt hooks.
+
+Guidelines:
+- Don’t overwrite `PROMPT_COMMAND` with a new string.
+- Instead, *prepend* your hook if it isn’t already present.
+- Prefer lightweight history sync (`history -a`/`history -n`) over a full `-w; -c; -r` cycle.
+
+Safe pattern:
+
+```bash
+__bp_history_sync() {
+  builtin history -a
+  builtin history -n
+}
+
+__bp_pre_prompt() {
+  __bp_history_sync
+}
+
+case ";${PROMPT_COMMAND-};" in
+  *";__bp_pre_prompt;"*) : ;;
+  "") PROMPT_COMMAND="__bp_pre_prompt" ;;
+  *)  PROMPT_COMMAND="__bp_pre_prompt; ${PROMPT_COMMAND}" ;;
+esac
+```
+
+If you want your prompt to include the venv name with clean spacing (space only when active), either:
+- let the venv activation modify PS1 (fine), and use a PS1 that conditionally inserts a space before your time, or
+- set `VIRTUAL_ENV_DISABLE_PROMPT=1` and generate the entire PS1 yourself.
+
 ## 4) The “tab completion adds ./” problem (root-cause playbook)
 
 Symptom: typing `my_file<TAB>` becomes `./my_file`.
 
-This is usually caused by *completion/readline configuration*, not bash itself. Typical suspects:
+Important nuance: if this only happens in the VS Code integrated terminal (but not in Terminal.app/iTerm), treat it as an environment/config difference first (shell integration, different rc files sourced, different `INPUTRC`, different completion scripts).
+
+Important: this can be *normal* bash behavior.
+
+- If you are completing the **command position** (first word) and `my_file` is an executable in the current directory but **not** found on `$PATH`, bash may complete it as `./my_file`.
+- In **argument position** (e.g. after `cat `), you typically won’t see that `./` prefix.
+
+Quick sanity test:
+
+```bash
+my_f<TAB>         # command position
+cat my_f<TAB>     # argument position
+```
+
+If only the first case yields `./...`, that’s expected and not necessarily a misconfiguration.
+
+If it happens in argument position too, then it’s likely caused by *completion/readline configuration*. Typical suspects:
 - `bash-completion` scripts (Homebrew) being sourced multiple times or conflicting versions.
 - custom completion functions using `compgen -f` / `-o filenames` with path normalization.
 - readline settings in `~/.inputrc`.
@@ -188,6 +290,35 @@ bash --noprofile --norc
 ```
 
 If the problem disappears here, it’s in your profile files (good news).
+
+### 4.1b VS Code vs Terminal.app diff (quick, targeted)
+
+Run these in BOTH places (VS Code integrated terminal and your normal terminal) and compare:
+
+```bash
+echo "SHELL=$SHELL"
+echo "0=$0"
+ps -p $$ -o command=
+printf 'TERM=%q\n' "${TERM-}"
+printf 'TERM_PROGRAM=%q\n' "${TERM_PROGRAM-}"
+printf 'BASH_ENV=%q\n' "${BASH_ENV-}"
+printf 'INPUTRC=%q\n' "${INPUTRC-}"
+printf 'PROMPT_COMMAND=%q\n' "${PROMPT_COMMAND-}"
+
+shopt -p progcomp
+complete -p | sed -n '1,120p'
+bind -V
+bind -v | sed -n '1,80p'
+```
+
+If VS Code differs, that’s the lead.
+
+### 4.1c VS Code shell integration toggle
+
+VS Code can inject prompt hooks and shell integration. As a temporary diagnostic step:
+- disable VS Code “shell integration” and restart the terminal.
+
+If that makes the `./` completion behavior match Terminal.app, focus your fixes on prompt/completion hooks rather than bash itself.
 
 ### 4.2 Identify if bash-completion is loaded
 
@@ -252,7 +383,7 @@ Two options that reduce confusion while you debug:
 Example (minimal):
 
 ```bash
-PS1='\u@\h \W$ '
+PS1='\A  \W > '
 ```
 
 ## 5) Cleanup strategy (low risk)
@@ -263,6 +394,12 @@ PS1='\u@\h \W$ '
 4. Replace old brew PATH logic with `brew shellenv`.
 5. Ensure bash-completion is loaded at most once.
 6. Bisect the `./` completion behavior with `--noprofile --norc`, then reintroduce chunks.
+7. Remove secrets from tracked files; source them from an untracked secrets file.
+
+Suggested pacing (so you can stop anytime):
+- Session A: interactive guard + PROMPT_COMMAND safety (no VS Code errors).
+- Session B: Homebrew + PATH cleanup.
+- Session C: completion investigation.
 
 ## 6) Definition of done
 
@@ -271,3 +408,4 @@ PS1='\u@\h \W$ '
 - Tab completion no longer rewrites tokens into `./...` (or you understand exactly why and accept it).
 - `rm` is guarded in interactive shells, and scripts still get the real `/bin/rm`.
 - The profile is readable: one top-level file plus a few well-named fragments.
+- No secrets live in versioned files.
