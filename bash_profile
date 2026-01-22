@@ -12,31 +12,7 @@ alias ...='cd ../..'
 alias ls='ls -G'
 alias clearNb="python3 -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
 
-# ---------------------
-# Safe rm (interactive only)
-# ---------------------
-case $- in
-  *i*)
-    trash() {
-      local trash_dir="$HOME/.trash"
-      mkdir -p "$trash_dir" || return
 
-      local src
-      for src in "$@"; do
-        [[ "$src" == -* ]] && { printf 'trash: refusing option-like arg: %s\n' "$src" >&2; continue; }
-        [[ ! -e "$src" ]] && { printf 'trash: %s: No such file or directory\n' "$src" >&2; continue; }
-
-        local base target
-        base="${src##*/}"
-        target="$trash_dir/${base}_$(date +%Y%m%d-%H%M%S)_$$"
-        mv -- "$src" "$target"
-      done
-    }
-
-    alias rm='trash'
-    alias realrm='/bin/rm'
-    ;;
-esac
 
 export PS1='\[\e[1;91m\]\A  \W\[\e[0m\] > '
 # export PS1='\[\e[1;91m\]${VIRTUAL_ENV:+" "}\A  \W\[\e[0m\] > '
@@ -62,6 +38,7 @@ bind '"\e[B": history-search-forward'
 # Setting PATH for Python 3.12
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
+PATH="$HOME/.local/bin:${PATH}"
 export PATH
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export JAVA_HOME=$(/usr/libexec/java_home)
